@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
    <title>Sarabun System </title>
- <?php $this->load->view('include/headHTML') ?>
+ <?php $this->load->view('include/headHTML'); ?>
 </head>
 <body>
     <div id="wrapper">

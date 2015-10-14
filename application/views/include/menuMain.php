@@ -1,7 +1,7 @@
         <!-- Navigation -->
         <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
 
-        <? $this->load->view('include/headerNav'); ?>
+        <?php $this->load->view('include/headerNav'); ?>
 
             <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
             <div id="sidebar-wrapper" class="collapse navbar-collapse navbar-ex1-collapse">
