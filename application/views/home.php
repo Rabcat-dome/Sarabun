@@ -2,11 +2,11 @@
 <html lang="en">
 <head>
    <title>Sarabun System </title>
- <? $this->load->view('include/headHTML') ?>
+ <?php $this->load->view('include/headHTML') ?>
 </head>
 <body>
     <div id="wrapper">
-        <? if($this->session->userdata('logged_in')["access"]=="u1")
+        <?php if($this->session->userdata('logged_in')["access"]=="u1")
         {$this->load->view('include/menuMain');}
         else{$this->load->view('include/menu');}?>
 
@@ -85,7 +85,7 @@
     </div>
     <!-- /#wrapper -->
 
-<? $this->load->view('include/jQfooter'); ?>
+<?php $this->load->view('include/jQfooter'); ?>
 
 </body>
 
