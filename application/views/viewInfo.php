@@ -3,14 +3,14 @@
 
 <head>
    <title>Sarabun System </title>
- <? $this->load->view('include/headHTML') ?>
+ <?php $this->load->view('include/headHTML') ?>
 </head>
 
 <body>
 
     <div id="wrapper">
 
-<? if($this->session->userdata('logged_in')["access"]=="u1")
+<?php if($this->session->userdata('logged_in')["access"]=="u1")
         {$this->load->view('include/menuMain');}
         else{$this->load->view('include/menu');}?>
 
@@ -24,7 +24,7 @@
                             <br />
                         <ol class="breadcrumb">
                             <li>
-                                <i class="fa fa-fw fa-user"></i> <?= $this->session->userdata('logged_in')["name"];?>
+                                <i class="fa fa-fw fa-user"></i> <?php echo $this->session->userdata('logged_in')["name"];?>
                             </li>
                             <li class="active">
                                 <i class="fa fa-fw fa-user"></i> <a href="unit">หน่วยในระบบ</a>
@@ -79,7 +79,7 @@
     </div>
     <!-- /#wrapper -->
 
-<? $this->load->view('include/jQfooter'); ?>
+<?php $this->load->view('include/jQfooter'); ?>
 
 </body>
 

@@ -3,12 +3,12 @@
 
 <head>
    <title>Sarabun System </title>
- <? $this->load->view('include/headHTML') ?>
+ <?php $this->load->view('include/headHTML') ?>
 </head>
 
 <body>
     <div id="wrapper">
-<? if($this->session->userdata('logged_in')["access"]=="u1")
+<?php if($this->session->userdata('logged_in')["access"]=="u1")
         {$this->load->view('include/menuMain');}
         else{$this->load->view('include/menu');}?>
 
@@ -20,87 +20,49 @@
                             <br />
                         <ol class="breadcrumb">
                             <li>
-                                <i class="fa fa-fw fa-user"></i> <?= $this->session->userdata('logged_in')["name"];?>
+                                <i class="fa fa-fw fa-user"></i> <?php echo $this->session->userdata('logged_in')["name"];?>
                             </li>
                             <li class="active">
-                                <i class="fa fa-fw fa-user"></i> <a href="unit">ภายนอก:เรื่องใหม่ (รับหนังสือจากภายนอก)</a>
+                                  <a href="unit"><i class="fa fa-search"></i> ภายนอก:เรื่องเดิม (ค้นหาหนังสือภายนอกเรื่องเดิม)</a>
                             </li>
                         </ol>
                     </div>
                 </div>
                 <!-- /.row -->
                     <div class="col-lg-8 col-md-offset-2">
-           
                         <div class="table-responsive">
                             <div class="col-lg-10">
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                <h3 class="panel-title"><i class="fa fa-fw fa-edit"></i> รับหนังสือจากภายนอก</h3>
+                                <h3 class="panel-title"><i class="fa fa-fw fa-edit"></i> ค้นหาหนังสือภายนอกเรื่องเดิม</h3>
                             </div>
                             <div class="panel-body">
                                 <div class="list-group">
+                                    <a  class="list-group-item">
+                                        <span class="badge"><input class="form-control" placeholder="" style="height:20px;width: 250px;"></span>
+                                        ที่ภายใน
+                                    </a>
                                     <a  class="list-group-item" >
                                         <span class="badge" ><select class="form-control" style="height:20px;width: 250px;">
-                                    <option>ปกติ</option>
-                                    <option style="color:red;">ด่วน</option>
-                                    <option style="color:red;">ด่วนมาก</option>
-                                    <option style="color:red;">ด่วนที่สุด</option>
+                                    <option></option>
+                                    <option style="color:blue;">รับ</option>
+                                    <option style="color:red;">ส่ง</option>
                                 </select></span>
-                                        ความเร่งด่วน
+                                        รับ / ส่ง
                                     </a>
+
                                     <a  class="list-group-item">
                                         <span class="badge" ><select class="form-control" style="height:20px;width: 250px;">
-                                    <option>--XXX--</option>        
-                                    <option>งป. / การเงิน</option>
-                                    <option>สวัสดิการ / การส่งกำลังบำรุง</option>
-                                    <option>กำลังพล</option>
-                                    <option>การฝึก / ศึกษา / อบรม</option>
-                                    <option>คำสั่ง</option>
-                                    <option>ระเบียบ</option>
-                                    <option>เรื่องเชิญ</option>
-                                    <option>รายงาน</option>
-                                    <option>เรือ / อากาศยาน</option>
-                                    <option>แผนงาน</option>
-                                    <option>การข่าว</option>
-                                    <option>อื่นๆ</option>
-                                    <option>อนุมัติ</option>
-                                </select></span>
-                                        ชนิดหนังสือ
-                                    </a>
-                                    <a  class="list-group-item">
-                                        <span class="badge" ><select class="form-control" style="height:20px;width: 250px;">
-                                    <option>ปกติ</option>
-                                    <option>ปกปิด</option>
+                                    <option></option>      
+                                    <option style="color:blue;">ปกติ</option>
+                                    <option style="color:blue;">ปกปิด</option>
                                     <option style="color:red;">ลับ</option>
                                     <option style="color:red;">ลับมาก</option>
                                     <option style="color:red;">ลับที่สุด</option>
                                 </select></span>
                                         ชั้นความลับ
                                     </a>
-                                    <a  class="list-group-item">
-                                        <span class="badge"><input class="form-control" placeholder="ใส่รายละเอียด" style="height:20px;width: 250px;"></span>
-                                        รับจาก
-                                    </a>
-                                    <a  class="list-group-item">
-                                        <span class="badge"><input class="form-control" placeholder="ใส่รายละเอียด" style="height:20px;width: 250px;"></span>
-                                        ที่
-                                    </a>
-                                    <a  class="list-group-item">
-                                        <span class="badge"><input class="form-control" placeholder="ใส่รายละเอียด" style="height:20px;width: 250px;"></span>
-                                        สว่นราชการ
-                                    </a>
-                                    <a  class="list-group-item">
-                                        <span class="badge"><input class="form-control" placeholder="กดเพื่อใส่วันที่" style="height:20px;width: 250px;" id="example1"></span>
-                                        วันที่
-                                    </a>
-                                    <a  class="list-group-item">
-                                        <span class="badge"><input class="form-control" placeholder="ใส่รายละเอียด" style="height:20px;width: 350px;"></span>
-                                        เรื่อง
-                                    </a>
-                                    <a  class="list-group-item">
-                                        <span class="badge"><input class="form-control" placeholder="ใส่รายละเอียด" style="height:20px;width: 250px;"></span>
-                                        คำขึ้นต้น
-                                    </a>
+                                    
                                 </div>
 
                                 <div class="text-right">
@@ -120,7 +82,7 @@
     </div>
     <!-- /#wrapper -->
 
-<? $this->load->view('include/jQfooter'); ?>
+<?php $this->load->view('include/jQfooter'); ?>
 </body>
 
 </html>

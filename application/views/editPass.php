@@ -3,14 +3,14 @@
 
 <head>
    <title>Sarabun System </title>
- <? $this->load->view('include/headHTML') ?>
+ <?php $this->load->view('include/headHTML'); ?>
 </head>
 
 <body>
 
     <div id="wrapper">
 
-<? if($this->session->userdata('logged_in')["access"]=="u1")
+<?php if($this->session->userdata('logged_in')["access"]=="u1")
         {$this->load->view('include/menuMain');}
         else{$this->load->view('include/menu');}?>
 
@@ -24,7 +24,7 @@
                             <br />
                         <ol class="breadcrumb">
                             <li>
-                                <i class="fa fa-fw fa-user"></i> <?= $this->session->userdata('logged_in')["name"];?>
+                                <i class="fa fa-fw fa-user"></i> <?php echo $this->session->userdata('logged_in')["name"];?>
                             </li>
                             <li class="active">
                                 <i class="fa fa-fw fa-gear"></i> <a href="editPass">แก้ไขข้อมูล</a>
@@ -36,7 +36,7 @@
                     <div class="col-lg-10 col-md-offset-1">
            
                         <div class="table-responsive">
-                            <?= form_open('mainPage/editPass');?>
+                            <?php echo form_open('mainPage/editPass');?>
                             <table class="table  table-bordered table-hover table-striped" >
                                 <thead >
                                     <tr  >
@@ -64,7 +64,7 @@
                             echo "<input type='submit' name='btsave' id='btsave' class='btn btn-primary'value='บันทึกการแก้ไข'> ";
                             echo "<button type='reset' class='btn btn-primary'>ยกเลิก</button>";
                             ?>
-                            <?= form_close();?>
+                            <?php echo form_close();?>
                             </div>
                         </div>
                     </div>
@@ -77,7 +77,7 @@
     </div>
     <!-- /#wrapper -->
 
-<? $this->load->view('include/jQfooter'); ?>
+<?php $this->load->view('include/jQfooter'); ?>
 
 </body>
 

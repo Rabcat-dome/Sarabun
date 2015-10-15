@@ -1,6 +1,6 @@
 <html>
 <head>
-	<link href="<?= base_url();?>asset/css/styleLogin.css" rel="stylesheet" type="text/css" />
+	<link href="<?php echo base_url();?>asset/css/styleLogin.css" rel="stylesheet" type="text/css" />
 	<title></title>
 </head>
 	<?php echo form_open('mainPage/index');?>
