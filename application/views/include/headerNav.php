@@ -11,7 +11,7 @@
             <!-- Top Menu Items -->
             <ul class="nav navbar-right top-nav">
                 <li class="dropdown">
-                    <a href="https://mail.j3.mil/owa/" target=_blank class="dropdown-toggle" ><i class="fa fa-envelope"> จดหมายเวียน </i> </a>
+                    <a href="https://exchange.j3.mil/owa/" target=_blank class="dropdown-toggle" ><i class="fa fa-envelope"> จดหมายเวียน </i> </a>
     
                 </li>
                 <li class="dropdown">

@@ -222,6 +222,23 @@ $temp = $this->db->get_where('booktb', array('send'=>'N','secret'=>$this->input-
                }
       }
 
+     public function backexbook()
+     {
+               if($this->session->userdata('logged_in'))
+           {
+
+                $data = $this->session->userdata('logged_in');
+                //$data['bookin'] = $this->book->get_book();
+                $this->load->view('reCome',$data);
+                
+            }
+            else
+               {
+                //If no session, redirect to login page
+                redirect('mainPage', 'refresh');
+               }
+      }
+
      public function logout()
      {
      $this->session->unset_userdata('logged_in');

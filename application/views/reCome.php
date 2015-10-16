@@ -23,7 +23,7 @@
                                 <i class="fa fa-fw fa-arrows-v"></i>  รับหนังสือ
                             </li>
                             <li class="active">
-                                  <a href="unit"><i class="fa fa-search"></i> ภายนอก:เรื่องเดิม (ค้นหาหนังสือภายนอกเรื่องเดิม)</a>
+                                  <a href="unit"><i class="fa fa-search"></i> ภายนอก:ตอบกลับ (ค้นหาหนังสือที่ส่งไป (อ้างถึง))</a>
                             </li>
                         </ol>
                     </div>
@@ -34,21 +34,13 @@
                             <div class="col-lg-10">
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                <h3 class="panel-title"><i class="fa fa-fw fa-edit"></i> ค้นหาหนังสือภายนอกเรื่องเดิม</h3>
+                                <h3 class="panel-title"><i class="fa fa-fw fa-edit"></i> ค้นหาหนังสือที่ส่งไป (อ้างถึง)</h3>
                             </div>
                             <div class="panel-body">
                                 <div class="list-group">
                                     <a  class="list-group-item">
                                         <span class="badge"><input class="form-control" placeholder="" style="height:20px;width: 250px;"></span>
                                         ที่ภายใน
-                                    </a>
-                                    <a  class="list-group-item" >
-                                        <span class="badge" ><select class="form-control" style="height:20px;width: 250px;">
-                                    <option></option>
-                                    <option style="color:blue;">รับ</option>
-                                    <option style="color:red;">ส่ง</option>
-                                </select></span>
-                                        รับ / ส่ง
                                     </a>
 
                                     <a  class="list-group-item">

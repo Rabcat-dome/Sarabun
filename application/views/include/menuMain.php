@@ -19,7 +19,7 @@
                                 <a href="oldexbook"><i class="fa fa-search"></i> ภายนอก:เรื่องเดิม</a>
                             </li>
                             <li>
-                                <a href="#"><i class="fa fa-search"></i> ภายนอก:ตอบกลับ</a>
+                                <a href="backexbook"><i class="fa fa-search"></i> ภายนอก:ตอบกลับ</a>
                             </li>
                         </ul>
                     </li>
@@ -27,26 +27,44 @@
                         <a href="javascript:;" data-toggle="collapse" data-target="#demo2"><i class="fa fa-fw fa-arrows-v"></i> ออกหนังสือ <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="demo2" class="collapse">
                             <li>
-                                <a href="#"><i class="fa fa-fw fa-edit"></i>ภายใน:ระดับกอง</a>
+                                <a href="#"><i class="fa fa-fw fa-edit"></i>ภายใน</a>
                             </li>
-                            <li>
-                                <a href="#"><i class="fa fa-fw fa-edit"></i>ภายนอก:ระดับกรม</a>
-                            </li>
+
+
                         </ul>
                     </li>
+                    <li>
+                        <a href="#"><i class="fa fa-fw fa-table"></i> อยู่ระหว่างดำเนินการ(ยก.)</a>
+                    </li>
+                    <li>
+                                <a href="backexbook"><i class="fa fa-search"></i> ค้นหาหนังสือรับ(ยก.)</a>
+                    </li>
+                    <li>
+                                <a href="backexbook"><i class="fa fa-search"></i> ค้นหาหนังสือออก(ยก.)</a>
+                    </li><li>.</li>
+                    <li>
+                                <a href="newexbook"><i class="fa fa-fw fa-edit"></i>บันทึกงานนอกระบบ</a>
+                    </li>
+                    <li>.</li>
+                                        <li >
+                        <a href="javascript:;" data-toggle="collapse" data-target="#demo3"><i class="fa fa-fw fa-arrows-v"></i> ติดตามหนังสือ <i class="fa fa-fw fa-caret-down"></i></a>
+                        <ul id="demo3" class="collapse">
+
                     <li>
                         <a href="#"><i class="fa fa-fw fa-table"></i> อยู่ระหว่างดำเนินการ</a>
                     </li>
                     <li>
-                        <a href="#"><i class="fa fa-fw fa-desktop"></i> เอกสารจบขั้นตอน</a>
-                    </li>
-                    <li>.</li>
-                    <li>
-                        <a href="#"><i class="fa fa-fw fa-table"></i> อยู่ระหว่างดำเนินการ:ทั้งกรม</a>
+                        <a href="#"><i class="fa fa-search"></i> ค้นหาหนังสือทั้งหมด</a>
                     </li>
                     <li>
-                        <a href="#"><i class="fa fa-fw fa-desktop"></i> เอกสารจบขั้นตอน:ทั้งกรม</a>
+                        <a href="#"><i class="fa fa-fw fa-desktop"></i> เรื่องเพื่อทราบ</a>
                     </li>
+                    <li>
+                        <a href="#"><i class="fa fa-fw fa-desktop"></i> ทะเบียนหนังสือ</a>
+                    </li>
+                        </ul>
+                    </li>
+
 
                 </ul>
             </div>
