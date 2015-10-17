@@ -239,6 +239,61 @@ $temp = $this->db->get_where('booktb', array('send'=>'N','secret'=>$this->input-
                }
       }
 
+     public function outinbook()
+     {
+               if($this->session->userdata('logged_in'))
+           {
+
+                   if($this->input->post("mess1")!=null)
+                  {
+
+$this->db->distinct();
+$this->db->select('inid');
+$this->db->order_by("inid","ASC");
+$temp = $this->db->get_where('booktb', array('send'=>'N','secret'=>$this->input->post("mess3"),'year'=>mdate("%Y",now()),'unit'=>$this->session->userdata('logged_in')["username"]));
+
+                    $arBooktb=array(
+                      "send"=>"N",
+                      "inid"=>"",
+                      "speed"=>$this->input->post("mess1"),
+                      "bookType"=>$this->input->post("mess2"),
+                      "secret"=>$this->input->post("mess3"),
+                      "id"=>$this->input->post("mess5"),
+                      "author"=>$this->input->post("mess6"),
+                      "days"=>$this->input->post("mess7"),
+                      "subject"=>$this->input->post("mess8"),
+                      "beginword"=>$this->input->post("mess9")
+                      );
+                    $arActiontb=array();
+                    $arTransactiontb=array(
+                      "acUnit"=>$this->input->post("mess4")
+                      );
+                    $arReunit=array(
+                      );
+
+                    $this->db->insert("booktb".$ar);
+                    $this->db->insert("booktb".$ar);
+                    $this->db->insert("booktb".$ar);
+                    $this->db->insert("booktb".$ar);
+
+                    redirect("mainPage","refresh");
+                    exit();
+                  }
+
+                $data = $this->session->userdata('logged_in');
+                //$data['bookin'] = $this->book->get_book();
+                $data['rs'] = $this->book->get_division();
+                $this->load->view('makenew',$data);
+
+            }
+            else
+               {
+                //If no session, redirect to login page
+                redirect('mainPage', 'refresh');
+               }
+      }
+
+
      public function logout()
      {
      $this->session->unset_userdata('logged_in');

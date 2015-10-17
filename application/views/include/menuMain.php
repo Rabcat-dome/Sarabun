@@ -27,7 +27,7 @@
                         <a href="javascript:;" data-toggle="collapse" data-target="#demo2"><i class="fa fa-fw fa-arrows-v"></i> ออกหนังสือ <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="demo2" class="collapse">
                             <li>
-                                <a href="#"><i class="fa fa-fw fa-edit"></i>ภายใน</a>
+                                <a href="outinbook"><i class="fa fa-fw fa-edit"></i>ภายใน</a>
                             </li>
 
 
