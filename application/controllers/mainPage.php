@@ -74,10 +74,11 @@ class MainPage extends CI_Controller {
 	{
           if($this->session->userdata('logged_in'))
            {
+			  
                 $data = $this->session->userdata('logged_in');
                 $data['bookin'] = $this->book->get_book();
                 $this->load->view('home',$data);
-                
+               
             }
             else
                {
@@ -87,6 +88,63 @@ class MainPage extends CI_Controller {
 
 		
 	}
+	public function reCopy()
+	{
+          if($this->session->userdata('logged_in'))
+           {
+			  
+                $data = $this->session->userdata('logged_in');
+                $data['bookin'] = $this->book->get_book();
+                $this->load->view('reCopy',$data);
+               
+            }
+            else
+               {
+                //If no session, redirect to login page
+                redirect('mainPage', 'refresh');
+               }
+
+		
+	}
+	
+	public function reNew()
+	{
+          if($this->session->userdata('logged_in'))
+           {
+			  
+                $data = $this->session->userdata('logged_in');
+                $data['bookin'] = $this->book->get_book();
+                $this->load->view('reNew',$data);
+               
+            }
+            else
+               {
+                //If no session, redirect to login page
+                redirect('mainPage', 'refresh');
+               }
+
+		
+	}
+
+	public function makenew()
+	{
+          if($this->session->userdata('logged_in'))
+           {
+			  
+                $data = $this->session->userdata('logged_in');
+                $data['bookin'] = $this->book->get_book();
+                $this->load->view('makenew',$data);
+               
+            }
+            else
+               {
+                //If no session, redirect to login page
+                redirect('mainPage', 'refresh');
+               }
+
+		
+	}
+
 
   public function unit()
   {
@@ -151,6 +209,17 @@ class MainPage extends CI_Controller {
                }
   }
 
+public function newexbook1()
+     {
+
+
+			 if($this->input->post("mess18")!=null)
+                  {
+				  $data = $this->session->userdata('logged_in');
+				 $data['bookin'] = $this->book->get_book1();
+			     $this->load->view('home',$data);
+				  }
+	 }
      public function newexbook()
      {
                if($this->session->userdata('logged_in'))
@@ -160,9 +229,9 @@ class MainPage extends CI_Controller {
                   {
 
 $this->db->distinct();
-$this->db->select('inid');
+$this->db->select('*');
 $this->db->order_by("inid","ASC");
-$temp = $this->db->get_where('booktb', array('send'=>'N','secret'=>$this->input->post("mess3"),'year'=>mdate("%Y",now()),'unit'=>$this->session->userdata('logged_in')["username"]));
+$temp = $this->db->get_where('booktb', array('send'=>'N','secret'=>$this->input->post("mess3"),'years'=>mdate("%Y",now()),'unit'=>$this->session->userdata('logged_in')["username"]));
 
                     $arBooktb=array(
                       "send"=>"N",
@@ -176,17 +245,22 @@ $temp = $this->db->get_where('booktb', array('send'=>'N','secret'=>$this->input-
                       "subject"=>$this->input->post("mess8"),
                       "beginword"=>$this->input->post("mess9")
                       );
+
+					
+
+						
+						$this->db->insert('booktb',$arBooktb);
+                
                     $arActiontb=array();
-                    $arTransactiontb=array(
+                   $arTransactiontb=array(
                       "acUnit"=>$this->input->post("mess4")
                       );
+
                     $arReunit=array(
                       );
 
-                    $this->db->insert("booktb".$ar);
-                    $this->db->insert("booktb".$ar);
-                    $this->db->insert("booktb".$ar);
-                    $this->db->insert("booktb".$ar);
+                   
+                  
 
                     redirect("mainPage","refresh");
                     exit();
@@ -303,4 +377,5 @@ $temp = $this->db->get_where('booktb', array('send'=>'N','secret'=>$this->input-
 
 
 }
+
 

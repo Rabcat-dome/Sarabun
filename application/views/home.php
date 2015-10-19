@@ -20,11 +20,13 @@
                             <br />
                         <ol class="breadcrumb">
                             <li>
-                                <i class="fa fa-fw fa-arrows-v"></i>  รับหนังสือ
+                                <i class="fa fa-fw fa-arrows-v"></i>  
+								
+								รับหนังสือ
                             </li>
                             <li class="active">
                                  <a href="main"><i class="fa fa-fw fa-table"></i> ภายในระบบ</a>
-                            </li>
+                            </li> 
                         </ol>
                     </div>
                 </div>
@@ -55,19 +57,21 @@
                                     {
                                         foreach ($bookin as $r) {
                                         echo "<tr>";
-                                        echo "<td align='left'> ".$r['booktb.bookID']."</td>";
-            if($r['booktb.send']=="N"){echo "<FONT color=green>(รับ) </FONT>".$this->session->userdata('logged_in')["section"]." ".$r['booktb.inid'];}
-                                else{echo "<FONT color=blue>(รับ) </FONT>".$r['booktb.author']." ".$r['booktb.inid'];}
-                                        echo "<td align='left'> ".$r['booktb.secret']."</td>";
-                                        echo "<td align='left'> ".$r['booktb.speed']."</td>";
+                                        echo "<td align='left'> ".$r['bookID']."</td>";
+										echo "<td align='left'> ";
+            if($r['send']=="N"){echo "<FONT color=green>(รับ) </FONT>".$this->session->userdata('logged_in')["section"]." ".$r['inid'];}
+                                else{echo "<FONT color=blue>(รับ) </FONT>".$r['author']." ".$r['inid'];}
+										 echo "</td>";
+                                        echo "<td align='left'> ".$r['secret']."</td>";
+                                        echo "<td align='left'> ".$r['speed']."</td>";
                                         echo "<td align='left'> ";
-                                        if($r['booktb.bookFile']!=""){get_pdf($r['booktb.bookFile']);}
+                                        if($r['bookFile']!=""){get_pdf($r['bookFile']);}
                                         echo "</td>";
-                                        echo "<td align='left'> ".get_linka($r['booktb.bookID'],$r['booktb.subject'])."</td>";
-                                        echo "<td align='left'> ".get_linka($r['booktb.bookID'],$r['booktb.id'])."</td>";
-                                        echo "<td align='left'> ".get_linka($r['booktb.bookID'],$r['booktb.author'])."</td>";
-                                        $var1 = standard_date('DATE_RFC822',$r['booktb.days']);
-                                        echo "<td align='left'> ".get_linka($r['booktb.bookID'],$var1)."</td>";
+                                        echo "<td align='left'> ".$r['subject']."</td>";
+                                        echo "<td align='left'> ".$r['id']."</td>";
+                                        echo "<td align='left'> ".$r['author']."</td>";
+                                        $var1 = $r['days'];
+                                        echo "<td align='left'>".$var1."</td>";
                                         echo "</tr>";}
                                     }
                                     ?>
