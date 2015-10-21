@@ -77,7 +77,7 @@ class MainPage extends CI_Controller {
 			  
                 $data = $this->session->userdata('logged_in');
                 $data['bookin'] = $this->book->get_book();
-                $this->load->view('home',$data);
+                $this->load->view('ReUnitAc',$data);
                
             }
             else
@@ -336,7 +336,7 @@ $temp = $this->db->get_where('booktb', array('send'=>'N','secret'=>$this->input-
                       "bookID"=>$arbookID,
                       "unit"=>$this->input->post("mess4"),
                         );										
-				      $this->db->insert('ReUnit',$arReUnit);
+				      $this->db->insert('home',$arReUnit);
 
 
   //-------------------------------------  insert TransactionTB--------------------------------

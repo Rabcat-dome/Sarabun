@@ -57,7 +57,7 @@
                                         <span class="badge" ><select name="mess2"  id="mess2" class="form-control" style="height:20px;width: 250px;">
                                     <option></option>
                                     <?php foreach($rs as $r)  ?>
-                                    <option><?php echo $r[0]; ?></option>
+                                    <option><?php echo $r; ?></option>
                                     <option>สวัสดิการ / การส่งกำลังบำรุง</option>
                                     <option>กำลังพล</option>
                                     <option>การฝึก / ศึกษา / อบรม</option>
