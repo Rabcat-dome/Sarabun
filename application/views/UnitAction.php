@@ -19,13 +19,9 @@
                     <div class="col-lg-12">
                             <br />
                         <ol class="breadcrumb">
-                            <li>
-                                <i class="fa fa-fw fa-arrows-v"></i>  
-								
-								รับหนังสือ
-                            </li>
+                    
                             <li class="active">
-                                 <a href="main"><i class="fa fa-fw fa-table"></i> ภายในระบบ</a>
+                                 <a href="main"><i class="fa fa-fw fa-table"></i> หนังสือที่อยู่ในขั้นระหว่างดำเนินการของ ยก.ทหาร</a>
                             </li> 
                         </ol>
                     </div>
@@ -37,14 +33,17 @@
                             <table class="table table-bordered table-hover table-striped">
                                 <thead>
                                     <tr>
-                                        <th>กดรับ</th>
-                                        <th>ที่ภายใน</th>
-                                        <th>ชั้นความลับ</th>
-                                        <th>ความเร่งด่วน</th>
-                                        <th>ไฟล์แนบ</th>
-                                        <th>เรื่อง</th>
-                                        <th>ที่</th>
-                                        <th>ส่วนราชการ</th>
+                                        
+                                        <th rowspan="2">ที่ภายใน</th>
+                                        <th rowspan="2">ชั้นความลับ</th>
+                                        <th rowspan="2">ความเร่งด่วน</th>
+                                        <th rowspan="2">ไฟล์แนบ</th>
+                                        <th rowspan="2">เรื่อง</th>
+                                        <th colspan="4">การดำเนินการครั้งสุดท้าย</th></tr>
+                                        <tr>
+                                        <th>หน่วยปฏิบัติ</th>
+                                        <th>การปฏิบัติ</th>
+                                        <th>หน่วย</th>
                                         <th>วันที่</th>
                                     </tr>
                                 </thead>
