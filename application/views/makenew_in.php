@@ -21,10 +21,10 @@
                             <br />
                         <ol class="breadcrumb">
                             <li>
-                                <i class="fa fa-fw fa-arrows-v"></i>  รับหนังสือ
+                                <i class="fa fa-fw fa-arrows-v"></i>  ออกหนังสือ
                             </li>
                             <li class="active">
-                                <a href="newexbook"><i class="fa fa-fw fa-edit"></i> ภายนอก:เรื่องใหม่ (รับหนังสือจากภายนอกเรื่องใหม่)</a>
+                                <a href="newexbook"><i class="fa fa-fw fa-edit"></i> ภายนอก:เรื่องใหม่ (ออกหนังสือภายใน)</a>
                             </li>
                         </ol>
                     </div>
@@ -36,7 +36,7 @@
                             <div class="col-lg-10">
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                <h3 class="panel-title"><i class="fa fa-fw fa-edit"></i> รับหนังสือจากภายนอกเรื่องใหม่</h3>
+                                <h3 class="panel-title"><i class="fa fa-fw fa-edit"></i> ออกหนังสือภายใน</h3>
                             </div>
 
                             <?php $attributes = array('id' => 'myform');
@@ -45,7 +45,7 @@
                             <div class="panel-body">
                                 <div class="list-group">
                                     <a  class="list-group-item" >
-                                        <span class="badge" ><select name="mess1"  id="mess1" class="form-control" style="height:20px;width: 250px;">
+                                        <span class="badge" ><select name="mess1" class="form-control" style="height:20px;width: 250px;">
                                     <option style="color:blue;">ปกติ</option>
                                     <option style="color:red;">ด่วน</option>
                                     <option style="color:red;">ด่วนมาก</option>
@@ -54,7 +54,7 @@
                                         ความเร่งด่วน
                                     </a>
                                     <a  class="list-group-item">
-                                        <span class="badge" ><select name="mess2"  id="mess2" class="form-control" style="height:20px;width: 250px;">
+                                        <span class="badge" ><select name="mess2" class="form-control" style="height:20px;width: 250px;">
                                     <option></option>
                                     <?php foreach($rs as $r)  ?>
                                     <option><?php echo $r[0]; ?></option>
@@ -74,7 +74,7 @@
                                         ชนิดหนังสือ
                                     </a>
                                     <a  class="list-group-item">
-                                        <span class="badge" ><select name="mess3" id="mess3"  class="form-control" style="height:20px;width: 250px;">
+                                        <span class="badge" ><select name="mess3" class="form-control" style="height:20px;width: 250px;">
                                     <option style="color:blue;">ปกติ</option>
                                     <option style="color:blue;">ปกปิด</option>
                                     <option style="color:red;">ลับ</option>
@@ -83,33 +83,30 @@
                                 </select></span>
                                         ชั้นความลับ
                                     </a>
+
                                     <a  class="list-group-item">
-                                        <span class="badge"><input name="mess4" id="mess4"  class="form-control" placeholder="" style="height:20px;width: 250px;"></span>
-                                        รับจาก
-                                    </a>
-                                    <a  class="list-group-item">
-                                        <span class="badge"><input name="mess5" id="mess5"  class="form-control" placeholder="" style="height:20px;width: 250px;"></span>
+                                        <span class="badge"><input name="mess5" class="form-control" placeholder="" style="height:20px;width: 250px;"></span>
                                         ที่
                                     </a>
                                     <a  class="list-group-item">
-                                        <span class="badge"><input name="mess6" id="mess6"  class="form-control" placeholder="" style="height:20px;width: 250px;"></span>
+                                        <span class="badge"><input name="mess6" class="form-control" placeholder="" style="height:20px;width: 250px;"></span>
                                         ส่วนราชการ
                                     </a>
                                     <a  class="list-group-item">
-                                        <span class="badge"><input name="mess7"    class="form-control" placeholder="" style="height:20px;width: 250px;" id="example1"></span>
+                                        <span class="badge"><input name="mess7" class="form-control" placeholder="" style="height:20px;width: 250px;" id="example1"></span>
                                         วันที่
                                     </a>
                                     <a  class="list-group-item">
-                                        <span class="badge"><input name="mess8" id="mess8"  class="form-control" placeholder="ใส่รายละเอียด" style="height:20px;width: 350px;"></span>
+                                        <span class="badge"><input name="mess8" class="form-control" placeholder="ใส่รายละเอียด" style="height:20px;width: 350px;"></span>
                                         เรื่อง
                                     </a>
                                     <a  class="list-group-item">
-                                        <span class="badge"><input name="mess9" id="mess9"  class="form-control" placeholder="" style="height:20px;width: 250px;"></span>
+                                        <span class="badge"><input name="mess9" class="form-control" placeholder="" style="height:20px;width: 250px;"></span>
                                         คำขึ้นต้น
                                     </a>
                                 </div>
                                 <div class="text-right">
-                                    <a onclick="document.getElementById('myform').submit()" href="#">รับหนังสือ <i class="fa fa-arrow-circle-right"></i></a>
+                                    <a onclick="document.getElementById('myform').submit()" href="#">บันทึก <i class="fa fa-arrow-circle-right"></i></a>
                                 </div>
                             </div>
 

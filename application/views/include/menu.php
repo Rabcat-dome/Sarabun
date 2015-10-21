@@ -13,7 +13,7 @@
                                 <a href="main"><i class="fa fa-fw fa-table"></i>ภายในระบบ</a>
                             </li>
                             <li>
-                                <a href="#"><i class="fa fa-search"></i> ภายนอก:เรื่องเดิม</a>
+                                <a href="reCopy"><i class="fa fa-search"></i> ภายนอก:เรื่องเดิม</a>
                             </li>
                         </ul>
                     </li>
@@ -21,10 +21,10 @@
                         <a href="javascript:;" data-toggle="collapse" data-target="#demo2"><i class="fa fa-fw fa-arrows-v"></i> ออกหนังสือ <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="demo2" class="collapse">
                             <li>
-                                <a href="#"><i class="fa fa-fw fa-edit"></i>ภายใน:ระดับกอง</a>
+                                <a href="outinbook?bookinout=in"><i class="fa fa-fw fa-edit"></i>ภายใน:ระดับกอง</a>
                             </li>
                             <li>
-                                <a href="#"><i class="fa fa-fw fa-edit"></i>ภายนอก:ระดับกรม</a>
+                                <a href="outinbook?bookinout=out"><i class="fa fa-fw fa-edit"></i>ภายนอก:ระดับกรม</a>
                             </li>
                         </ul>
                     </li>
@@ -34,7 +34,7 @@
                         <a href="#"><i class="fa fa-fw fa-table"></i> อยู่ระหว่างดำเนินการ</a>
                     </li>
                     <li>
-                        <a href="#"><i class="fa fa-fw fa-desktop"></i> เรื่องเพื่อทราบ:จบขั้นตอน</a>
+                        <a href="reNew"><i class="fa fa-fw fa-edit"></i>หนังสือรับ</a>
                     </li>
                     
                     

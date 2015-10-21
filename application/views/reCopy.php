@@ -12,7 +12,7 @@
         {$this->load->view('include/menuMain');}
         else{$this->load->view('include/menu');}?>
  <?php $attributes1 = array('id' => 'myform');
- echo form_open('mainPage/newexbook1', $attributes1);?>
+ echo form_open('mainPage/rexCopy', $attributes1);?>
         <div id="page-wrapper">
             <div class="container-fluid">
                 <!-- Page Heading -->
@@ -44,22 +44,22 @@
                                         ที่ภายใน
                                     </a>
                                     <a  class="list-group-item" >
-                                        <span class="badge" ><select class="form-control" style="height:20px;width: 250px;">
+                                        <span class="badge" ><select class="form-control" style="height:20px;width: 250px;" name="mess19"  id="mess19">
                                     <option></option>
-                                    <option style="color:blue;">รับ</option>
-                                    <option style="color:red;">ส่ง</option>
+                                    <option style="color:blue;" value ="N">รับ</option>
+                                    <option style="color:red;" value ="Y">ส่ง</option>
                                 </select></span>
                                         รับ / ส่ง
                                     </a>
 
                                     <a  class="list-group-item">
-                                        <span class="badge" ><select class="form-control" style="height:20px;width: 250px;">
+                                        <span class="badge" ><select class="form-control" style="height:20px;width: 250px;"  name="mess20"  id="mess20">
                                     <option></option>      
-                                    <option style="color:blue;">ปกติ</option>
-                                    <option style="color:blue;">ปกปิด</option>
-                                    <option style="color:red;">ลับ</option>
-                                    <option style="color:red;">ลับมาก</option>
-                                    <option style="color:red;">ลับที่สุด</option>
+                                    <option style="color:blue;" value ="ปกติ">ปกติ</option>
+                                    <option style="color:blue;"  value ="ปกปิด">ปกปิด</option>
+                                    <option style="color:red;" value ="ลับ">ลับ</option>
+                                    <option style="color:red;" value ="ลับมาก">ลับมาก</option>
+                                    <option style="color:red;" value ="ลับที่สุด">ลับที่สุด</option>
                                 </select></span>
                                         ชั้นความลับ
                                     </a>

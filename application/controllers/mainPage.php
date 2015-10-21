@@ -88,24 +88,6 @@ class MainPage extends CI_Controller {
 
 		
 	}
-		public function UnitAction()
-	{
-          if($this->session->userdata('logged_in'))
-           {
-			  
-                $data = $this->session->userdata('logged_in');
-                $data['bookin'] = $this->book->get_book();
-                $this->load->view('UnitAction',$data);
-               
-            }
-            else
-               {
-                //If no session, redirect to login page
-                redirect('mainPage', 'refresh');
-               }
-
-		
-	}
 	public function reCopy()
 	{
           if($this->session->userdata('logged_in'))
@@ -227,22 +209,82 @@ class MainPage extends CI_Controller {
                }
   }
 
-public function newexbook1()
+public function rexCopy()
      {
 
 
-			 if($this->input->post("mess18")!=null)
-                  {
-				  $data = $this->session->userdata('logged_in');
-				 $data['bookin'] = $this->book->get_book1();
+		
+				 $data = $this->session->userdata('logged_in');
+				 $data['bookin'] = $this->book->get_rexCopy();
 			     $this->load->view('home',$data);
-				  }
+				  
 	 }
+
+
+public function rexCome()
+     {
+
+
+		
+				 $data = $this->session->userdata('logged_in');
+				 $data['bookin'] = $this->book->get_reCome();
+			     $this->load->view('home',$data);
+				  
+	 }
+public function receive()
+     {
+	  $array= $this->input->post("BookID");
+	
+     
+	  $status_actionTB = $this->session->userdata('logged_in')["username"];
+	  $data_actionTB=array( "Status"=>$status_actionTB,);
+	  foreach ($array as $row)
+            {
+
+		
+             //------------------------------At Update table bookTB status ---------
+
+            
+								$this->db->where('bookID', $row);
+								$this->db->where('status', $status_actionTB);
+								$this->db->update('actionTB', $data_actionTB); 
+
+		     //-------------------------At Update table bookTB Locals ------------
+			$query = $this->db->query("SELECT * FROM bookTB where BookID='".$row."'");
+                         foreach ($query->result() as $row_unit)
+                                 {
+                                  $unit =$row_unit->unit;
+								  $Locals_bookTB=array( "Locals"=>$unit,);
+								  $this->db->where('bookID',  $row);
+								  $this->db->update('bookTB', $Locals_bookTB); 
+                    	//------------------------------At insert table ReUnit --------------------
+								  $this->db->distinct();
+								  $arBooktb=array(
+								  "bookID"=>$row,
+							      "unit"=>$unit,
+								  "redate"=>NOW(),
+									  
+                                   );
+				                 $this->db->insert('reunit',$arBooktb);
+
+                                  }
+					 
+          
+			}
+       
+					 redirect("mainPage/main","refresh");
+		
+							
+				
+
+	           }
+
+
+
      public function newexbook()
      {
-               if($this->session->userdata('logged_in'))
+               if($this->session->userdata('logged_in')!=null)
            {
-
                    if($this->input->post("mess1")!=null)
                   {
 
@@ -259,20 +301,65 @@ $temp = $this->db->get_where('booktb', array('send'=>'N','secret'=>$this->input-
                       "secret"=>$this->input->post("mess3"),
                       "id"=>$this->input->post("mess5"),
                       "author"=>$this->input->post("mess6"),
-                      "days"=>$this->input->post("mess7"),
+                      "days"=>$this->input->post("example1"),
                       "subject"=>$this->input->post("mess8"),
                       "beginword"=>$this->input->post("mess9")
                       );
 
-					
+					  $this->db->insert('booktb',$arBooktb);
 
-						
-						$this->db->insert('booktb',$arBooktb);
-                
-                    $arActiontb=array();
-                   $arTransactiontb=array(
-                      "acUnit"=>$this->input->post("mess4")
-                      );
+	//------------------------------------ insert ActionTB------------------------------------------
+
+					  $query = $this->db->query("SELECT * FROM bookTB");
+                      foreach ($query->result() as $row_unit)
+                                 {
+                                  $arbookID =$row_unit->bookID;
+                                 }
+					  $logged_in	= $this->session->userdata('logged_in')['username'];
+					  $arActionTB=array(
+                      "actionID"=>$arbookID."".$logged_in,
+                      "bookID"=>$arbookID,
+                      "Status"=>$this->session->userdata('logged_in')['username'],
+                        );										
+				      $this->db->insert('ActionTB',$arActionTB);
+
+
+//------------------------------------ insert ReUnit------------------------------------------
+
+					  $query = $this->db->query("SELECT * FROM bookTB");
+                      foreach ($query->result() as $row_unit)
+                                 {
+                                  $arbookID =$row_unit->bookID;
+                                 }
+					  $logged_in	= $this->session->userdata('logged_in')['username'];
+					  $arReUnit=array(
+                      "bookID"=>$arbookID,
+                      "unit"=>$this->input->post("mess4"),
+                        );										
+				      $this->db->insert('ReUnit',$arReUnit);
+
+
+  //-------------------------------------  insert TransactionTB--------------------------------
+
+
+                      $query = $this->db->query("SELECT * FROM bookTB");
+                      foreach ($query->result() as $row_unit)
+                                 {
+                                  $arbookID =$row_unit->bookID;
+								//  $arUnit =$row_unit->unit;
+                                 }
+
+					  $logged_in	= $this->session->userdata('logged_in')['username'];
+					  $arTransactionTB=array(
+                      "bookID"=>$arbookID,
+                      "Actions"=>"รับ",
+					  "acUnit"=>$this->input->post("mess4"),
+					  "trandate"=>now(),
+                        );										
+				      $this->db->insert('TransactionTB',$arTransactionTB);
+
+
+                   
 
                     $arReunit=array(
                       );
@@ -280,10 +367,10 @@ $temp = $this->db->get_where('booktb', array('send'=>'N','secret'=>$this->input-
                    
                   
 
-                    redirect("mainPage","refresh");
+                    redirect("mainPage/main","refresh");
                     exit();
-                  }
-
+                  
+				  }
                 $data = $this->session->userdata('logged_in');
                 //$data['bookin'] = $this->book->get_book();
                 $data['rs'] = $this->book->get_division();
@@ -333,6 +420,8 @@ $temp = $this->db->get_where('booktb', array('send'=>'N','secret'=>$this->input-
 
      public function outinbook()
      {
+
+
                if($this->session->userdata('logged_in'))
            {
 
@@ -342,9 +431,9 @@ $temp = $this->db->get_where('booktb', array('send'=>'N','secret'=>$this->input-
 $this->db->distinct();
 $this->db->select('inid');
 $this->db->order_by("inid","ASC");
-$temp = $this->db->get_where('booktb', array('send'=>'N','secret'=>$this->input->post("mess3"),'year'=>mdate("%Y",now()),'unit'=>$this->session->userdata('logged_in')["username"]));
-
-                    $arBooktb=array(
+$temp = $this->db->get_where('booktb', array('send'=>'N','secret'=>$this->input->post("mess3"),'years'=>mdate("%Y",now()),'unit'=>$this->session->userdata('logged_in')["username"]));
+                   
+				    $arBooktb=array(
                       "send"=>"N",
                       "inid"=>"",
                       "speed"=>$this->input->post("mess1"),
@@ -352,10 +441,64 @@ $temp = $this->db->get_where('booktb', array('send'=>'N','secret'=>$this->input-
                       "secret"=>$this->input->post("mess3"),
                       "id"=>$this->input->post("mess5"),
                       "author"=>$this->input->post("mess6"),
-                      "days"=>$this->input->post("mess7"),
+                      "days"=>$this->input->post("example1"),
                       "subject"=>$this->input->post("mess8"),
                       "beginword"=>$this->input->post("mess9")
                       );
+
+					  $this->db->insert('booktb',$arBooktb);
+
+					  	//------------------------------------ insert ActionTB------------------------------------------
+
+					  $query = $this->db->query("SELECT * FROM bookTB");
+                      foreach ($query->result() as $row_unit)
+                                 {
+                                  $arbookID =$row_unit->bookID;
+                                 }
+					  $logged_in	= $this->session->userdata('logged_in')['username'];
+					  $arActionTB=array(
+                      "actionID"=>$arbookID."".$logged_in,
+                      "bookID"=>$arbookID,
+                      "Status"=>$this->session->userdata('logged_in')['username'],
+                        );										
+				      $this->db->insert('ActionTB',$arActionTB);
+
+
+//------------------------------------ insert ReUnit------------------------------------------
+
+					  $query = $this->db->query("SELECT * FROM bookTB");
+                      foreach ($query->result() as $row_unit)
+                                 {
+                                  $arbookID =$row_unit->bookID;
+                                 }
+					  $logged_in	= $this->session->userdata('logged_in')['username'];
+					  $arReUnit=array(
+                      "bookID"=>$arbookID,
+                      "unit"=>$this->input->post("mess4"),
+                        );										
+				      $this->db->insert('ReUnit',$arReUnit);
+
+
+  //-------------------------------------  insert TransactionTB--------------------------------
+
+
+                      $query = $this->db->query("SELECT * FROM bookTB");
+                      foreach ($query->result() as $row_unit)
+                                 {
+                                  $arbookID =$row_unit->bookID;
+								//  $arUnit =$row_unit->unit;
+                                 }
+
+					  $logged_in	= $this->session->userdata('logged_in')['username'];
+					  $arTransactionTB=array(
+                      "bookID"=>$arbookID,
+                      "Actions"=>"ออกหนังสือ",
+					  "acUnit"=>$this->input->post("mess4"),
+					  "trandate"=>now(),
+                        );										
+				      $this->db->insert('TransactionTB',$arTransactionTB);
+
+
                     $arActiontb=array();
                     $arTransactiontb=array(
                       "acUnit"=>$this->input->post("mess4")
@@ -363,12 +506,10 @@ $temp = $this->db->get_where('booktb', array('send'=>'N','secret'=>$this->input-
                     $arReunit=array(
                       );
 
-                    $this->db->insert("booktb".$ar);
-                    $this->db->insert("booktb".$ar);
-                    $this->db->insert("booktb".$ar);
-                    $this->db->insert("booktb".$ar);
+                    
+                   
 
-                    redirect("mainPage","refresh");
+                   redirect("mainPage/main","refresh");
                     exit();
                   }
 

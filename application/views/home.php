@@ -11,7 +11,9 @@
         else{$this->load->view('include/menu');}?>
 
         <div id="page-wrapper">
-
+                            <?php $attributes = array('id' => 'myform');
+                             echo form_open('mainPage/receive', $attributes);?>
+							
             <div class="container-fluid">
 
                 <!-- Page Heading -->
@@ -21,8 +23,7 @@
                         <ol class="breadcrumb">
                             <li>
                                 <i class="fa fa-fw fa-arrows-v"></i>  
-								
-								รับหนังสือ
+								       <a onclick="document.getElementById('myform').submit()" href="#">รับหนังสือ <i class="fa fa-arrow-circle-right"></i></a>
                             </li>
                             <li class="active">
                                  <a href="main"><i class="fa fa-fw fa-table"></i> ภายในระบบ</a>
@@ -55,12 +56,13 @@
                                     }
                                     else
                                     {
+										
                                         foreach ($bookin as $r) {
                                         echo "<tr>";
-                                        echo "<td align='left'> ".$r['bookID']."</td>";
-										echo "<td align='left'> ";
+                                        echo "<td align='left'> <INPUT type='checkbox' name='BookID[]' id='BookID[]'  value=".$r['bookID']."";
+										echo "</td><td align='left'> ";
             if($r['send']=="N"){echo "<FONT color=green>(รับ) </FONT>".$this->session->userdata('logged_in')["section"]." ".$r['inid'];}
-                                else{echo "<FONT color=blue>(รับ) </FONT>".$r['author']." ".$r['inid'];}
+                                else{echo "<FONT color=blue>(รับ) </FONT>".$r['author']."".$r['unit']."".$r['inid'];}
 										 echo "</td>";
                                         echo "<td align='left'> ".$r['secret']."</td>";
                                         echo "<td align='left'> ".$r['speed']."</td>";
@@ -82,7 +84,7 @@
                     </div>
             </div>
             <!-- /.container-fluid -->
-
+         <?php echo form_close(); ?>
         </div>
         <!-- /#page-wrapper -->
 

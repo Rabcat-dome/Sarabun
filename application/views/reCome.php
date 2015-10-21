@@ -11,7 +11,8 @@
 <?php if($this->session->userdata('logged_in')["access"]=="u1")
         {$this->load->view('include/menuMain');}
         else{$this->load->view('include/menu');}?>
-
+<?php $attributes1 = array('id' => 'myform');
+ echo form_open('mainPage/rexCome', $attributes1);?>
         <div id="page-wrapper">
             <div class="container-fluid">
                 <!-- Page Heading -->
@@ -39,12 +40,12 @@
                             <div class="panel-body">
                                 <div class="list-group">
                                     <a  class="list-group-item">
-                                        <span class="badge"><input class="form-control" placeholder="" style="height:20px;width: 250px;"></span>
+                                        <span class="badge"><input class="form-control" placeholder="" style="height:20px;width: 250px;" name="mess18"  id="mess18"></span>
                                         ที่ภายใน
                                     </a>
 
                                     <a  class="list-group-item">
-                                        <span class="badge" ><select class="form-control" style="height:20px;width: 250px;">
+                                        <span class="badge" ><select class="form-control" style="height:20px;width: 250px;" name="mess19"  id="mess19">
                                     <option></option>      
                                     <option style="color:blue;">ปกติ</option>
                                     <option style="color:blue;">ปกปิด</option>
@@ -57,8 +58,8 @@
                                     
                                 </div>
 
-                                <div class="text-right">
-                                    <a href="#">ค้นหาหนังสือ <i class="fa fa-arrow-circle-right"></i></a>
+                               	<div class="text-right">
+                                    <a onclick="document.getElementById('myform').submit()" href="#">ค้นหาหนังสือ <i class="fa fa-arrow-circle-right"></i></a>
                                 </div>
                             </div>
                         </div>
