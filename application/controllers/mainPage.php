@@ -77,7 +77,7 @@ class MainPage extends CI_Controller {
 			  
                 $data = $this->session->userdata('logged_in');
                 $data['bookin'] = $this->book->get_book();
-                $this->load->view('ReUnitAc',$data);
+                $this->load->view('home',$data);
                
             }
             else
@@ -392,6 +392,23 @@ $temp = $this->db->get_where('booktb', array('send'=>'N','secret'=>$this->input-
                 $data = $this->session->userdata('logged_in');
                 //$data['bookin'] = $this->book->get_book();
                 $this->load->view('reCopy',$data);
+                
+            }
+            else
+               {
+                //If no session, redirect to login page
+                redirect('mainPage', 'refresh');
+               }
+      }
+
+     public function unitAction()
+     {
+               if($this->session->userdata('logged_in'))
+           {
+
+                $data = $this->session->userdata('logged_in');
+                //$data['bookin'] = $this->book->get_book();
+                $this->load->view('unitAction',$data);
                 
             }
             else

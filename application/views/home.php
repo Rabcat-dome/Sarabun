@@ -23,7 +23,7 @@
                         <ol class="breadcrumb">
                             <li>
                                 <i class="fa fa-fw fa-arrows-v"></i>  
-								       <a onclick="document.getElementById('myform').submit()" href="#">รับหนังสือ <i class="fa fa-arrow-circle-right"></i></a>
+								       <a onclick="document.getElementById('myform').submit()" href="#">รับหนังสือ </a>
                             </li>
                             <li class="active">
                                  <a href="main"><i class="fa fa-fw fa-table"></i> ภายในระบบ</a>
