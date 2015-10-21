@@ -13,7 +13,7 @@ Class Book extends CI_Model
 	  $mess18 =$this->input->post("mess18");
       $mess19 =$this->input->post("mess19");
 	  $mess20 =$this->input->post("mess20");
-     	     $sql = "SELECT *  FROM booktb  where inid like '%".$this->input->post("mess18")."%'  and  secret like '%".$this->input->post("mess20")."%' and  send like '%".$mess19."%'";
+     	     $sql = "SELECT bookID,send,inid,author,unit,secret,speed,bookFile,subject,id,days  FROM booktb  where inid like '%".$this->input->post("mess18")."%'  and  secret like '%".$this->input->post("mess20")."%' and  send like '%".$mess19."%'";
           $query = $this->db->query($sql);
           return $query->result_array();
 		
@@ -25,7 +25,7 @@ Class Book extends CI_Model
 	  $mess18 =$this->input->post("mess18");
       $mess19 =$this->input->post("mess19");
 	  $mess20 =$this->input->post("mess20");
-      $sql = "SELECT *  FROM booktb  where   send = 'Y'  and inid like '%".$this->input->post("mess18")."%'  and  secret like '%".$this->input->post("mess19")."%' ";
+      $sql = "SELECT bookID,send,inid,author,unit,secret,speed,bookFile,subject,id,days  FROM booktb  where   send = 'Y'  and inid like '%".$this->input->post("mess18")."%'  and  secret like '%".$this->input->post("mess19")."%' ";
           $query = $this->db->query($sql);
           return $query->result_array();
 		
