@@ -50,7 +50,10 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php if(count($bookin)==0)
+                                    <?php 
+									
+									
+									if(count($bookin)==0)
                                     {
                                         echo "<tr><td colspan='9' align='center'>--no data--</td></tr>";
                                     }
@@ -69,7 +72,9 @@
                                         echo "<td align='left'> ";
                                         if($r['bookFile']!=""){get_pdf($r['bookFile']);}
                                         echo "</td>";
-                                        echo "<td align='left'> ".$r['subject']."</td>";
+										echo "<td align='left'><a  href='reunitAc?bookID=".$r['bookID']."'>".$r['subject']." </a>";
+										echo "</td>";
+                                         /// echo "<td align='left'> ".$r['subject']."</td>";
                                         echo "<td align='left'> ".$r['id']."</td>";
                                         echo "<td align='left'> ".$r['author']."</td>";
                                         $var1 = $r['days'];

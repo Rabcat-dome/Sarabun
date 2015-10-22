@@ -69,6 +69,25 @@ class MainPage extends CI_Controller {
 
 		
 	}
+		public function reunitAc()
+	{
+          if($this->session->userdata('logged_in'))
+           {
+			  
+                $data = $this->session->userdata('logged_in');
+              // $data['bookin'] = $this->book->get_book();
+				$data['bookin'] = $this->book->get_detailbook();
+                $this->load->view('reunitAc',$data);
+               
+            }
+            else
+               {
+                //If no session, redirect to login page
+                redirect('mainPage', 'refresh');
+               }
+
+		
+	}
 
 	public function main()
 	{
