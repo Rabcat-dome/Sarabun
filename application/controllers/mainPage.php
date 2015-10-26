@@ -75,7 +75,7 @@ class MainPage extends CI_Controller {
            {
 			  
                 $data = $this->session->userdata('logged_in');
-              // $data['bookin'] = $this->book->get_book();
+                $data['bookin'] = $this->book->get_book();
 				$data['bookin'] = $this->book->get_detailbook();
                 $this->load->view('reunitAc',$data);
                
@@ -183,6 +183,44 @@ class MainPage extends CI_Controller {
 
     
   }
+   public function bookmain5()
+  {
+         if($this->session->userdata('logged_in'))
+           {
+			  
+                $data = $this->session->userdata('logged_in');
+              // $data['bookin'] = $this->book->get_book();
+				$data['bookin'] = $this->book->get_detailbook();
+                $this->load->view('bookmain5',$data);
+               
+            }
+            else
+               {
+                //If no session, redirect to login page
+                redirect('mainPage', 'refresh');
+               }
+
+    
+  }
+     public function transaction()
+  {
+         if($this->session->userdata('logged_in'))
+           {
+			  
+                $data = $this->session->userdata('logged_in');
+                $data['bookin'] = $this->book->get_detailbook();
+				$data['bookin_transaction'] = $this->book->get_transaction();
+                $this->load->view('transaction',$data);
+               
+            }
+            else
+               {
+                //If no session, redirect to login page
+                redirect('mainPage', 'refresh');
+               }
+
+    
+  }
 
   public function editPass()
 {
@@ -226,9 +264,8 @@ class MainPage extends CI_Controller {
                 //If no session, redirect to login page
                 redirect('mainPage', 'refresh');
                }
-  }
-
-public function rexCopy()
+     }
+     public function rexCopy()
      {
 
 
@@ -240,7 +277,7 @@ public function rexCopy()
 	 }
 
 
-public function rexCome()
+     public function rexCome()
      {
 
 
@@ -250,7 +287,110 @@ public function rexCome()
 			     $this->load->view('home',$data);
 				  
 	 }
-public function receive()
+
+	 public function upbook()
+     {
+		    if($this->session->userdata('logged_in'))
+           {
+                $data = $this->session->userdata('logged_in');
+                $data['bookin'] = $this->book->get_upbook();
+                $this->load->view('upbook',$data);
+            }
+            else
+            {
+           redirect('mainPage', 'refresh');
+            }	  
+	 }
+	  public function ResendPro()
+     {
+		    if($this->session->userdata('logged_in'))
+           {
+                $data = $this->session->userdata('logged_in');
+                $data['bookin'] = $this->book->get_upbook();
+                $this->load->view('ResendPro',$data);
+            }
+            else
+            {
+           redirect('mainPage', 'refresh');
+            }	  
+	 }
+	  public function co_upbook()
+     {
+		    if($this->session->userdata('logged_in'))
+           {
+                $data = $this->session->userdata('logged_in');
+                $data['bookin'] = $this->book->get_co_upbook();
+                $this->load->view('co_upbook',$data);
+            }
+            else
+            {
+           redirect('mainPage', 'refresh');
+            }	  
+	 }
+	  public function upload_form()
+     {
+		    if($this->session->userdata('logged_in'))
+           {
+                $data = $this->session->userdata('logged_in');
+                $data['bookin'] = $this->book->get_co_upbook();
+                $this->load->view('upload_form',$data);
+            }
+            else
+            {
+           redirect('mainPage', 'refresh');
+            }	  
+	 }
+	  public function editbook()
+     {
+		    if($this->session->userdata('logged_in'))
+           {
+                $data = $this->session->userdata('logged_in');
+                $data['bookin'] = $this->book->get_co_upbook();
+                $this->load->view('editbook',$data);
+            }
+            else
+            {
+           redirect('mainPage', 'refresh');
+            }	  
+	 }
+	public function do_upload()
+	 {
+		$bookid= $_POST['bookid'];
+		$config['file_name'] = "Up".$bookid.$this->session->userdata('logged_in')["username"];
+		$config['upload_path'] = './application/uploads/';
+		$config['allowed_types'] = 'gif|jpg|png|pdf';
+		$config['max_size']	= '100000';
+        
+		
+
+			$this->db->where('bookID', $bookid);
+	
+			$status_bookFile = $config['file_name'].".pdf";
+			//$this->db->where('status', $status_actionTB);
+
+            $data_bookFile=array( "bookFile"=>$status_bookFile,);
+			$this->db->update('booktb', $data_bookFile); 
+		
+
+		$this->load->library('upload', $config);
+
+		if ( ! $this->upload->do_upload())
+		{
+			    $data = $this->session->userdata('logged_in');
+				$data['bookin'] = $this->book->get_detailbook();
+                $this->load->view('bookmain5',$data);
+               
+		}
+		else
+		{
+			    $data = $this->session->userdata('logged_in');
+				$data['bookin'] = $this->book->get_detailbook();
+                $this->load->view('bookmain5',$data);
+               
+		}
+
+	}
+     public function receive()
      {
 	  $array= $this->input->post("BookID");
 	

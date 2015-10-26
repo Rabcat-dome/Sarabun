@@ -20,20 +20,14 @@
                 <div class="row1">
                     <div class="col-lg-12">
                             <br>
-                        <ol class="breadcrumb">ประวัติหนังสือ
-                            <li>
-                               </i>  
-								       
-                            </li>
-                         
-                        </ol>
+                       
                     </div>
                 </div>
                 <!-- /.row -->
                     <div class="col-lg-12">
            
                         <div class="table-responsive">
-                            <table class="table table-bordered table-hover table-striped1">
+                            <table class="table table-bordered table-hover table-striped">
                                 <thead>
                                     <tr>
                                       

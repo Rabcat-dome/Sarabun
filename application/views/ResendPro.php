@@ -50,15 +50,11 @@
                                         
                                     </tr>
                                     <tr>
-                                        <th>กดรับ</th>
-                                        <th>ที่ภายใน</th>
-                                        <th>ชั้นความลับ</th>
-                                        <th>ความเร่งด่วน</th>
-                                        <th>ไฟล์แนบ</th>
-                                        <th>เรื่อง</th>
-                                        <th>ที่</th>
-                                        <th>ส่วนราชการ</th>
-                                        <th>วันที่</th>
+                                        <td align='middle' <th>หน่วยปฏิบัติ </th>
+                                        <td align='middle' <th>ปฏิบัติ</th>
+                                        <td align='middle' <th>หน่วย </th>
+                                        <td align='middle' <th>วันที่ / เวลา </th>
+                                     
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -66,32 +62,18 @@
                                     <?php 
 									
 									
-									if(count($bookin)==0)
+									if(count($bookin_transaction)==0)
                                     {
                                         echo "<tr><td colspan='9' align='center'>--no data--</td></tr>";
                                     }
                                     else
                                     {
-										
-                                        foreach ($bookin as $r) {
+                                        foreach ($bookin_transaction as $r) {
                                         echo "<tr>";
-                                        echo "<td align='left'> <INPUT type='checkbox' name='BookID[]' id='BookID[]'  value=".$r['bookID']."";
-										echo "</td><td align='left'> ";
-            if($r['send']=="N"){echo "<FONT color=green>(รับ) </FONT>".$this->session->userdata('logged_in')["section"]." ".$r['inid'];}
-                                else{echo "<FONT color=blue>(รับ) </FONT>".$r['author']."".$r['unit']."".$r['inid'];}
-										 echo "</td>";
-                                        echo "<td align='left'> ".$r['secret']."</td>";
-                                        echo "<td align='left'> ".$r['speed']."</td>";
-                                        echo "<td align='left'> ";
-                                        if($r['bookFile']!=""){get_pdf($r['bookFile']);}
-                                        echo "</td>";
-										echo "<td align='left'><a  href='reunitAc?bookID=".$r['bookID']."'>".$r['subject']." </a>";
-										echo "</td>";
-                                         /// echo "<td align='left'> ".$r['subject']."</td>";
-                                        echo "<td align='left'> ".$r['id']."</td>";
-                                        echo "<td align='left'> ".$r['author']."</td>";
-                                        $var1 = $r['days'];
-                                        echo "<td align='left'>".$var1."</td>";
+                                     	echo "<td align='middle' valign='bottom'>".$r['unit']."</a></td>";
+										echo "<td align='middle' valign='bottom'>".$r['actions']."</a></td>";
+										echo "<td align='middle' valign='bottom'>".$r['acUnit']."</a></td>";
+										echo "<td align='middle' valign='bottom'>".$r['trandate']."</a></td>";
                                         echo "</tr>";}
                                     }
                                     ?>

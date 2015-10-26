@@ -11,8 +11,8 @@
         else{$this->load->view('include/menu');}?>
 
         <div id="page-wrapper" style="width: 100%;">
-                            <?php $attributes = array('id' => 'myform');
-                             echo form_open('mainPage/receive', $attributes);?>
+                            <?php $attributes = array('id' => 'myform','enctype' => 'multipart/form-data');
+                             echo form_open_multipart('mainPage/do_upload', $attributes);?>
             <div class="container-fluid" >
                                  
                 <!-- Page Heading -->
@@ -29,7 +29,7 @@
                           
                                  <a href="main"> 
                            
-							 <ol class="breadcrumb">การดำเนินการ 
+							 <ol class="breadcrumb">บันทึก 
                         </ol>
                     </div>
                 </div>
@@ -49,20 +49,10 @@
 							 $this->load->view('detailbook',$bookID); ?></th>
                                         
                                     </tr>
-                                    <tr>
-                                        <th>กดรับ</th>
-                                        <th>ที่ภายใน</th>
-                                        <th>ชั้นความลับ</th>
-                                        <th>ความเร่งด่วน</th>
-                                        <th>ไฟล์แนบ</th>
-                                        <th>เรื่อง</th>
-                                        <th>ที่</th>
-                                        <th>ส่วนราชการ</th>
-                                        <th>วันที่</th>
-                                    </tr>
+                                
                                 </thead>
                                 <tbody>
-
+                                     
                                     <?php 
 									
 									
@@ -72,27 +62,17 @@
                                     }
                                     else
                                     {
-										
                                         foreach ($bookin as $r) {
+										echo "<input type='hidden' name='bookid' value=".$r['bookID'].">";
+                                        echo "<input type='hidden' name='user' value=".$this->session->userdata('logged_in')["username"].">";
+                                        echo "<input type='hidden' name='des' value=".$r['bookID'].">";
                                         echo "<tr>";
-                                        echo "<td align='left'> <INPUT type='checkbox' name='BookID[]' id='BookID[]'  value=".$r['bookID']."";
-										echo "</td><td align='left'> ";
-            if($r['send']=="N"){echo "<FONT color=green>(รับ) </FONT>".$this->session->userdata('logged_in')["section"]." ".$r['inid'];}
-                                else{echo "<FONT color=blue>(รับ) </FONT>".$r['author']."".$r['unit']."".$r['inid'];}
-										 echo "</td>";
-                                        echo "<td align='left'> ".$r['secret']."</td>";
-                                        echo "<td align='left'> ".$r['speed']."</td>";
-                                        echo "<td align='left'> ";
-                                        if($r['bookFile']!=""){get_pdf($r['bookFile']);}
-                                        echo "</td>";
-										echo "<td align='left'><a  href='reunitAc?bookID=".$r['bookID']."'>".$r['subject']." </a>";
-										echo "</td>";
-                                         /// echo "<td align='left'> ".$r['subject']."</td>";
-                                        echo "<td align='left'> ".$r['id']."</td>";
-                                        echo "<td align='left'> ".$r['author']."</td>";
-                                        $var1 = $r['days'];
-                                        echo "<td align='left'>".$var1."</td>";
-                                        echo "</tr>";}
+                                     	echo "<td ><font size='4'><INPUT size='40' TYPE=FILE NAME=userfile></font></td>";
+										echo "<td align='middle' valign='bottom'><a href='ResendPro?bookID=".$r['bookID']."'>ไม่มีไฟล์</a></a></td>";
+										?>
+										<td align='middle' valign='bottom'> <a onclick="document.getElementById('myform').submit()" href="#">บันทึก </a></td>
+                                        <?php
+										echo "</tr>";}
                                     }
                                     ?>
 
