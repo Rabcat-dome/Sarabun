@@ -35,7 +35,7 @@
                         <a href="unitAction"><i class="fa fa-fw fa-table"></i> อยู่ระหว่างดำเนินการ(ยก.)</a>
                     </li>
                     <li>
-                                <a href="backexbook"><i class="fa fa-search"></i> ค้นหาหนังสือรับ(ยก.)</a>
+                                <a href="backinbook"><i class="fa fa-search"></i> ค้นหาหนังสือรับ(ยก.)</a>
                     </li>
                     <li>
                                 <a href="backexbook"><i class="fa fa-search"></i> ค้นหาหนังสือออก(ยก.)</a>

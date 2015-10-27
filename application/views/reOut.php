@@ -22,7 +22,7 @@
                         <ol class="breadcrumb">
  
                             <li class="active">
-                                <a href="newexbook"><i class="fa fa-search"></i> ค้นหาหนังสือรับ(ยก.)</a>
+                                <a href="newexbook"><i class="fa fa-search"></i> ค้นหาหนังสือออก(ยก.)</a>
                             </li>
                         </ol>
                     </div>
@@ -34,7 +34,7 @@
                             <div class="col-lg-10">
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                <h3 class="panel-title"><i class="fa fa-search"></i> ค้นหาหนังสือรับ(ยก.)</h3>
+                                <h3 class="panel-title"><i class="fa fa-search"></i> ค้นหาหนังสือออก(ยก.)</h3>
                             </div>
 
                             <?php $attributes = array('id' => 'myform');
@@ -49,18 +49,19 @@
                                         หนังสือปี พ.ศ.   
                                     </a>
                                     <a  class="list-group-item">
-                                        <span class="badge"><input name="mess2" id="mess2"  class="form-control" placeholder="" style="height:20px;width: 250px;"></span>
-                                        ที่ภายใน
-                                    </a>
-                                    <a  class="list-group-item">
                                         <span class="badge" ><select name="mess3"  id="mess3" class="form-control" style="height:20px;width: 250px;">
-                                    <option></option>
-                                    <option>รับ</option>
-                                    <option>ส่ง</option>
+                                   
+                                    <option>หนังสือภายนอก</option>
+                                    <option>หนังสือภายใน</option>
 
                                 </select></span>
-                                        รับ / ส่ง
+                                        ประเภทหนังสือ
                                     </a>
+                                    <a  class="list-group-item">
+                                        <span class="badge"><input name="mess2" id="mess2"  class="form-control" placeholder="" style="height:20px;width: 250px;"></span>
+                                        ที่ภายในระบบ
+                                    </a>
+
                                     <a  class="list-group-item">
                                         <span class="badge" ><select name="mess4"  id="mess4" class="form-control" style="height:20px;width: 250px;">
                                     <option></option>

@@ -7,5 +7,10 @@
                     format: "dd/mm/yyyy"
                 });
 
+                $('#example2').datepicker({
+                    format: "dd/mm/yyyy"
+                });
+
             });
+
         </script>
