@@ -72,7 +72,9 @@
                                         echo "<td align='left'> ";
                                         if($r['bookFile']!=""){get_pdf($r['bookFile']);}
                                         echo "</td>";
-										echo "<td align='left'><a  href='bookmain5?bookID=".$r['bookID']."'>".$r['subject']." </a>";
+										?>	
+										<?php
+										echo "<td align='left'><a  href='bookmain?bookID=".$r['bookID']."'>".$r['subject']."  </a>";
 										echo "</td>";
                                          /// echo "<td align='left'> ".$r['subject']."</td>";
                                         echo "<td align='left'> ".$r['id']."</td>";
@@ -80,8 +82,8 @@
                                         $var1 = $r['days'];
                                         echo "<td align='left'>".$var1."</td>";
                                         echo "</tr>";}
-                                    }
-                                    ?>
+										?>
+                                    
 
                                 </tbody>
                             </table>
@@ -89,7 +91,10 @@
                     </div>
             </div>
             <!-- /.container-fluid -->
-         <?php echo form_close(); ?>
+               <?php echo form_close(); ?>
+			   <?php
+				}
+                ?>
         </div>
         <!-- /#page-wrapper -->
 

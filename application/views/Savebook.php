@@ -41,8 +41,7 @@
 
                             <?php $attributes = array('id' => 'myform');
                              echo form_open('mainPage/updatebook', $attributes);?>
-							 <?php $bookinout = $_POST["mess0"]?>
-							
+							 <?php $bookinout = $_GET["bookID"]?>
                             <div class="panel-body">
 							     <?php   foreach ($bookin as  $r) { 
 										   $bookID     =      $r['bookID'];
@@ -54,14 +53,14 @@
 										   $subject    =      $r['subject'];
 										   $beginword  =      $r['beginword'];
 								              }  ?>
-                                    <div class="list-group">
+                                <div class="list-group">
                                     <a  class="list-group-item" >
-                                    <span class="badge" ><select name="mess1" id="mess1" class="form-control" style="height:20px;width: 250px;" ">
+                                        <span class="badge" ><select name="mess1" id="mess1" class="form-control" style="height:20px;width: 250px;" ">
                                     <option style="color:blue;" value="ปกติ" <?php  if($speed=="ปกติ"){echo "selected='selected'";} ?>>ปกติ</option>
                                     <option style="color:red;"  value="ด่วน"  <?php  if($speed=="ด่วน"){echo "selected='selected'";} ?>>ด่วน</option>
-                                    <option style="color:red;"  value="ด่วนมาก"  <?php  if($speed=="ด่วนมาก"){echo "selected='selected'";} ?>>ด่วนมาก  </option>
+                                    <option style="color:red;"  value="ด่วนมาก"  <?php  if($speed=="ด่วนมาก"){echo "selected='selected'";} ?>>ด่วนมาก</option>
                                     <option style="color:red;"  value="ด่วนที่สุด"   <?php  if($speed=="ด่วนที่สุด"){echo "selected='selected'";} ?> >ด่วนที่สุด</option>
-                                    </select></span>
+                                </select></span>
 
 
 								
@@ -72,7 +71,6 @@
                                         <span class="badge" ><select name="mess2" id="mess2" class="form-control" style="height:20px;width: 250px;" >
                                     <option></option>
                                     <?php foreach($rs as $r)  ?>
-
                                     <option><?php echo $r[0]; ?></option>
                                     <option>สวัสดิการ / การส่งกำลังบำรุง</option>
                                     <option>กำลังพล</option>
@@ -94,7 +92,6 @@
 											
 									
                                     <a  class="list-group-item">
-
                                         <span class="badge" ><select name="mess3" id="mess3" class="form-control" style="height:20px;width: 250px;" ">
                                     <option style="color:blue;" value="ปกติ"  <?php  if($secret=="ปกติ"){echo "selected='selected'";} ?> >ปกติ</option>
                                     <option style="color:blue;" value="ปกปิด" <?php  if($secret=="ปกปิด"){echo "selected='selected'";} ?> >ปกปิด</option>
@@ -103,7 +100,6 @@
                                     <option style="color:red;"  value="ลับที่สุด" <?php  if($secret=="ลับที่สุด"){echo "selected='selected'";} ?>>ลับที่สุด</option>
                                 </select></span>
                                         ชั้นความลับ
-
                                     </a>
 								
                                     <a  class="list-group-item">

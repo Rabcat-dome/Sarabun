@@ -6,9 +6,9 @@
 </head>
 <body>
     <div id="wrapper" style="width: 100%;">
-        <?php if($this->session->userdata('logged_in')["access"]=="u1")
-        {$this->load->view('include/menuMain');}
-        else{$this->load->view('include/menu');}?>
+       <?php $noo=""; if($this->session->userdata('logged_in')["access"]=="u1"){ ?>
+		 <?php   ?>
+		 <?php } else{ }?>
 
         <div id="page-wrapper" style="width: 100%;">
                             <?php $attributes = array('id' => 'myform','enctype' => 'multipart/form-data');
@@ -45,8 +45,8 @@
                                 <thead>
 								<tr>
                                         <th colspan="9"><?php 
-							 $bookID=$_GET['bookID'];
-							 $this->load->view('detailbook',$bookID); ?></th>
+						
+							 $this->load->view('detailbook'); ?></th>
                                         
                                     </tr>
                                 
@@ -63,7 +63,8 @@
                                     else
                                     {
                                         foreach ($bookin as $r) {
-										echo "<input type='hidden' name='bookid' value=".$r['bookID'].">";
+										echo "<input type='hidden' name='mess0' id='mess0' value=".$r['bookID'].">";
+										echo "<input type='hidden' name='bookid' id='bookid' value=".$r['bookID'].">";
                                         echo "<input type='hidden' name='user' value=".$this->session->userdata('logged_in')["username"].">";
                                         echo "<input type='hidden' name='des' value=".$r['bookID'].">";
                                         echo "<tr>";

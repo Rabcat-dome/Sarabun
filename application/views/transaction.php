@@ -6,9 +6,9 @@
 </head>
 <body>
     <div id="wrapper" style="width: 100%;">
-        <?php if($this->session->userdata('logged_in')["access"]=="u1")
-        {$this->load->view('include/menuMain');}
-        else{$this->load->view('include/menu');}?>
+       <?php $noo=""; if($this->session->userdata('logged_in')["access"]=="u1"){ ?>
+		 <?php ?>
+		 <?php } else{ }?>
 
         <div id="page-wrapper" style="width: 100%;">
                             <?php $attributes = array('id' => 'myform');
@@ -42,8 +42,8 @@
                                 <thead>
 								<tr>
                                         <th colspan="9"><?php 
-							 $bookID=$_GET['bookID'];
-							 $this->load->view('detailbook',$bookID); ?></th>
+							
+							 $this->load->view('detailbook'); ?></th>
                                         
                                     </tr>
                                     <tr>

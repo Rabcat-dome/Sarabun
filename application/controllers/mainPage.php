@@ -183,22 +183,44 @@ class MainPage extends CI_Controller {
 
     
   }
-   public function bookmain5()
-  {
+   public function bookmain()
+  {  
+
+    /*
+	     if($this->session->userdata('logged_in'))
+            {
+
+                $data = $this->session->userdata('logged_in');
+                $data['rs'] = $this->user->unit_table();
+                $this->load->view('unit',$data);
+                
+            }
+            else
+            {
+                //If no session, redirect to login page
+                redirect('mainPage', 'refresh');
+            }
+		*/
+
          if($this->session->userdata('logged_in'))
            {
 			  
                 $data = $this->session->userdata('logged_in');
-              // $data['bookin'] = $this->book->get_book();
+                //$data['bookin'] = $this->book->get_book();
+				//$data['bookin'] = $this->book->get_detailbook();
 				$data['bookin'] = $this->book->get_detailbook();
-                $this->load->view('bookmain5',$data);
+			    $data['bookin1'] = $this->book->get_user();
+                $this->load->view('bookmain',$data);
                
             }
             else
-               {
+             {
                 //If no session, redirect to login page
                 redirect('mainPage', 'refresh');
-               }
+             }
+
+			
+    
 
     
   }
@@ -222,8 +244,9 @@ class MainPage extends CI_Controller {
     
   }
 
+
   public function editPass()
-{
+  {
           if($this->session->userdata('logged_in'))
             {
                 if($this->input->post('btsave')!=null)
@@ -249,8 +272,7 @@ class MainPage extends CI_Controller {
             }
 
 
-}
-
+     }
      public function bookinfo($bid){  //หน้าแสดงข้อมูลหนังสือ  ยังทำไม่เสร็จ
                if($this->session->userdata('logged_in'))
            {
@@ -301,19 +323,70 @@ class MainPage extends CI_Controller {
            redirect('mainPage', 'refresh');
             }	  
 	 }
-	  public function ResendPro()
+	
+	     public function ResendPro()
      {
-		    if($this->session->userdata('logged_in'))
+         if($this->session->userdata('logged_in'))
            {
+			  
                 $data = $this->session->userdata('logged_in');
-                $data['bookin'] = $this->book->get_upbook();
+                $data['bookin'] = $this->book->get_detailbook();
+				$data['bookin_r'] = $this->book->get_ResendPro();
                 $this->load->view('ResendPro',$data);
+               
             }
             else
+               {
+                //If no session, redirect to login page
+                redirect('mainPage', 'refresh');
+               }
+
+    
+      }
+	      public function ResendPro1()
+     {
+         if($this->session->userdata('logged_in'))
+           {
+			  
+                $data = $this->session->userdata('logged_in');
+                $data['bookin'] = $this->book->get_detailbook();
+				$data['bookin_r'] = $this->book->get_ResendPro1();
+                $this->load->view('ResendPro',$data);
+               
+            }
+            else
+               {
+                //If no session, redirect to login page
+                redirect('mainPage', 'refresh');
+               }
+
+    
+      }
+	      public function send()
+      {
+       $array= $this->input->post("nameID");
+
+	  foreach ($array as $row)
             {
-           redirect('mainPage', 'refresh');
-            }	  
-	 }
+
+
+				$ActionTB_del_user  = $this->session->userdata('logged_in')["username"];
+				$ActionTB_del= $row."".$ActionTB_del_user ;
+			    $this->db->where('ActionTB.bookid', $ActionTB_del );
+			    $this->db->delete('ActionTB');
+
+	           
+				$send = "ส่ง";
+				$ar_TransactionTB=array(
+                "bookID"=>$this->input->post("mess0"),
+                "unit"=>$this->input->post("mess1"),
+				"Actions"=>$send,
+				"trandate"=>date('Y-m-d', now()),
+                 );
+			    $this->db->insert('TransactionTB',$ar_TransactionTB);
+			}
+    
+     }
 	  public function co_upbook()
      {
 		    if($this->session->userdata('logged_in'))
@@ -345,13 +418,137 @@ class MainPage extends CI_Controller {
 		    if($this->session->userdata('logged_in'))
            {
                 $data = $this->session->userdata('logged_in');
-                $data['bookin'] = $this->book->get_co_upbook();
+                $data['bookin'] = $this->book->get_editbook();
+                $data['str'] = $this->input->post("mess0");
                 $this->load->view('editbook',$data);
             }
             else
             {
            redirect('mainPage', 'refresh');
             }	  
+	 }
+	   public function updatebook()
+     {
+		   
+		   if($this->session->userdata('logged_in'))
+           {
+	        $Booktb_id_update= $this->input->post("mess0");
+
+			$Booktb_update=array(
+                      "send"=>"",
+                      "inid"=>"",
+                      "speed"=>$this->input->post("mess1"),
+                      "bookType"=>$this->input->post("mess2"),
+                      "secret"=>$this->input->post("mess3"),
+                      "id"=>$this->input->post("mess5"),
+                      "author"=>$this->input->post("mess6"),
+                      "days"=>$this->input->post("example1"),
+                      "subject"=>$this->input->post("mess8"),
+                      "beginword"=>$this->input->post("mess9")
+                      );
+			$this->db->where('bookID', $Booktb_id_update);
+			$this->db->update('Booktb', $Booktb_update); 
+            $data = $this->session->userdata('logged_in');
+            $data['bookin'] = $this->book->get_book();
+            $this->load->view('home',$data);
+            }
+            else
+            {
+           redirect('mainPage', 'refresh');
+            }	  
+		
+	 }
+	  public function savebook()
+     {
+
+     
+       if($this->session->userdata('logged_in'))
+           {
+	
+
+                
+			    $ar_Booktb=array(
+                "bookID"=>$this->input->post("mess0"),
+                "unit"=>$this->input->post("mess1"),
+                 );
+			    $this->db->insert('ReUnit',$ar_Booktb);
+
+				$ar_TransactionTB=array(
+                "bookID"=>$this->input->post("mess0"),
+                "unit"=>$this->input->post("mess1"),
+				"Actions"=>$this->input->post("mess2"),
+				"trandate"=>date('Y-m-d', now()),
+                 );
+			    $this->db->insert('TransactionTB',$ar_TransactionTB);
+
+				$ActionTB_del_book  = $this->input->post("mess0");
+				$ActionTB_del_user  = $this->session->userdata('logged_in')["username"];
+				$ActionTB_del= $ActionTB_del_book."".$ActionTB_del_user ;
+			    $this->db->where('ActionTB.actionID', $ActionTB_del );
+			    $this->db->delete('ActionTB');
+
+               	$data = $this->session->userdata('logged_in');
+                $data['bookin'] = $this->book->get_book();
+                $this->load->view('home',$data);
+            }
+            else
+               {
+                //If no session, redirect to login page
+                redirect('mainPage', 'refresh');
+               }
+
+            
+		
+	 }
+
+	  public function save1book()
+     {
+
+     
+       if($this->session->userdata('logged_in'))
+           {
+//---------------------------------------  insert reunit
+
+			    $ar_Booktb=array(
+                "bookID"=>$this->input->post("mess0"),
+                "unit"=>$this->input->post("mess1"),
+                 );
+			    $this->db->insert('ReUnit',$ar_Booktb);
+//---------------------------------------  delete actiontb
+			    $ActionTB_del_book  = $this->input->post("mess0");
+				$ActionTB_del_user  = $this->session->userdata('logged_in')["username"];
+				$ActionTB_del= $ActionTB_del_book."".$ActionTB_del_user ;
+			    $this->db->where('ActionTB.actionID', $ActionTB_del );
+			    $this->db->delete('ActionTB');
+//---------------------------------------   insert TransactionTB
+				$Actions_save= "จัดเก็บเพื่อทราบ";
+				$ar_TransactionTB=array(
+                "bookID"=>$this->input->post("mess0"),
+                "unit"=>$this->input->post("mess1"),
+				"Actions"=>$Actions_save,
+				"trandate"=>date('Y-m-d', now()),
+                 );
+			    $this->db->insert('TransactionTB',$ar_TransactionTB);
+//-------------------------------------------  update booktb
+                $Booktb_id_update = $this->input->post("mess0");
+			    $Booktb_update=array("Info"=>"Y",);
+			    $this->db->where('bookID', $Booktb_id_update);
+			    $this->db->update('Booktb', $Booktb_update); 
+
+
+
+                $data = $this->session->userdata('logged_in');
+				$data['bookin'] = $this->book->get_detailbook();
+                $this->load->view('bookmain',$data);
+            }
+            else
+               {
+                //If no session, redirect to login page
+                redirect('mainPage', 'refresh');
+               }
+
+            
+		
 	 }
 	public function do_upload()
 	 {
@@ -360,14 +557,10 @@ class MainPage extends CI_Controller {
 		$config['upload_path'] = './application/uploads/';
 		$config['allowed_types'] = 'gif|jpg|png|pdf';
 		$config['max_size']	= '100000';
-        
-		
 
 			$this->db->where('bookID', $bookid);
-	
 			$status_bookFile = $config['file_name'].".pdf";
 			//$this->db->where('status', $status_actionTB);
-
             $data_bookFile=array( "bookFile"=>$status_bookFile,);
 			$this->db->update('booktb', $data_bookFile); 
 		
@@ -376,18 +569,22 @@ class MainPage extends CI_Controller {
 
 		if ( ! $this->upload->do_upload())
 		{
-			    $data = $this->session->userdata('logged_in');
-				$data['bookin'] = $this->book->get_detailbook();
-                $this->load->view('bookmain5',$data);
+			 
                
 		}
 		else
 		{
-			    $data = $this->session->userdata('logged_in');
-				$data['bookin'] = $this->book->get_detailbook();
-                $this->load->view('bookmain5',$data);
+
+			   	  $data = $this->session->userdata('logged_in');
+                $data['bookin'] = $this->book->get_book();
+                $this->load->view('home',$data);
+               
                
 		}
+
+	
+          
+
 
 	}
      public function receive()
@@ -495,7 +692,7 @@ $temp = $this->db->get_where('booktb', array('send'=>'N','secret'=>$this->input-
                       "bookID"=>$arbookID,
                       "unit"=>$this->input->post("mess4"),
                         );										
-				      $this->db->insert('home',$arReUnit);
+				      $this->db->insert('ReUnit',$arReUnit);
 
 
   //-------------------------------------  insert TransactionTB--------------------------------

@@ -2,11 +2,11 @@
 <html lang="en">
 <head>
    <title>Sarabun System </title>
- <?php $this->load->view('include/headHTML'); ?>
+
 </head>
 <body>
     <div id="wrapper1"  style="width: 100%;">
-        <?php if($this->session->userdata('logged_in')["access"]=="u1")
+     	<?php if($this->session->userdata('logged_in')["access"]=="u1")
         {$this->load->view('include/menuMain');}
         else{$this->load->view('include/menu');}?>
 
@@ -70,6 +70,7 @@
             if($r['send']=="N"){echo "<FONT color=blue>(รับ) </FONT>".$this->session->userdata('logged_in')["section"]." ".$r['inid'];}
                                 else{echo "<FONT color=blue>(ส่ง) </FONT>".$r['author']."".$r['unit']."".$r['inid'];}
 							
+					
 								echo "&nbsp;ที่:&nbsp; <FONT color=blue>&nbsp;".$r['inid']."</FONT>";
 								echo "<br>ที่:&nbsp;<FONT color=blue>&nbsp;".$r['id']."</FONT>";
 								echo "<br>ชั้นความลับ:<FONT color=blue>&nbsp;".$r['secret']."</FONT>";
@@ -78,6 +79,7 @@
 								echo "<br>เรื่อง:<FONT color=blue>&nbsp;".$r['subject']."</FONT>";
 							    echo "<br>คำขึ้นต้น:<FONT color=blue>&nbsp;".$r['beginword']."</FONT>";
 								echo "<div style='width: 100%;  position: fixed;'></div>";
+								
 							    echo "</td>";
                                 echo "</tr>";}
                                        /// echo "<td align='left'> ".$r['subject']."</td>";
@@ -174,7 +176,7 @@ end if
     </div>
     <!-- /#wrapper -->
 
-<?php $this->load->view('include/jQfooter'); ?>
+
 
 </body>
 
