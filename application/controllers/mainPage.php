@@ -611,6 +611,23 @@ $temp = $this->db->get_where('booktb', array('send'=>'N','secret'=>$this->input-
                }
       }
 
+      public function saveoutbook()
+     {
+               if($this->session->userdata('logged_in'))
+           {
+
+                $data = $this->session->userdata('logged_in');
+                //$data['bookin'] = $this->book->get_book();
+                $this->load->view('offline',$data);
+                
+            }
+            else
+               {
+                //If no session, redirect to login page
+                redirect('mainPage', 'refresh');
+               }
+      }
+
      public function outinbook()
      {
 

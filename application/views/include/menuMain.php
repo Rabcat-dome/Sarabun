@@ -41,7 +41,7 @@
                                 <a href="backexbook"><i class="fa fa-search"></i> ค้นหาหนังสือออก(ยก.)</a>
                     </li><li>.</li>
                     <li>
-                                <a href="newexbook"><i class="fa fa-fw fa-edit"></i>บันทึกงานนอกระบบ</a>
+                                <a href="saveoutbook"><i class="fa fa-fw fa-edit"></i>บันทึกงานนอกระบบ</a>
                     </li>
                     <li>.</li>
                                         <li >
