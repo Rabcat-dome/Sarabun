@@ -156,10 +156,10 @@ class MainPage extends CI_Controller {
                
             }
             else
-               {
+            {
                 //If no session, redirect to login page
                 redirect('mainPage', 'refresh');
-               }
+            }
 
 		
 	}
@@ -209,7 +209,7 @@ class MainPage extends CI_Controller {
                 //$data['bookin'] = $this->book->get_book();
 				//$data['bookin'] = $this->book->get_detailbook();
 				$data['bookin'] = $this->book->get_detailbook();
-			    $data['bookin1'] = $this->book->get_user();
+			    $data['bookin_user'] = $this->book->get_user();
                 $this->load->view('bookmain',$data);
                
             }
@@ -324,14 +324,15 @@ class MainPage extends CI_Controller {
             }	  
 	 }
 	
-	     public function ResendPro()
+	 public function ResendPro()
      {
          if($this->session->userdata('logged_in'))
            {
 			  
                 $data = $this->session->userdata('logged_in');
+				$data['bookin_user'] = $this->book->get_ResendPro();
                 $data['bookin'] = $this->book->get_detailbook();
-				$data['bookin_r'] = $this->book->get_ResendPro();
+				
                 $this->load->view('ResendPro',$data);
                
             }
@@ -343,25 +344,7 @@ class MainPage extends CI_Controller {
 
     
       }
-	      public function ResendPro1()
-     {
-         if($this->session->userdata('logged_in'))
-           {
-			  
-                $data = $this->session->userdata('logged_in');
-                $data['bookin'] = $this->book->get_detailbook();
-				$data['bookin_r'] = $this->book->get_ResendPro1();
-                $this->load->view('ResendPro',$data);
-               
-            }
-            else
-               {
-                //If no session, redirect to login page
-                redirect('mainPage', 'refresh');
-               }
 
-    
-      }
 	      public function send()
       {
        $array= $this->input->post("nameID");
@@ -553,13 +536,13 @@ class MainPage extends CI_Controller {
 	public function do_upload()
 	 {
 		$bookid= $_POST['bookid'];
-		$config['file_name'] = "Up".$bookid.$this->session->userdata('logged_in')["username"];
+		//$config['file_name'] = "Up".$bookid.$this->session->userdata('logged_in')["username"];
 		$config['upload_path'] = './application/uploads/';
-		$config['allowed_types'] = 'gif|jpg|png|pdf';
+		$config['allowed_types'] = 'gif|jpg|png|pdf|xls|doc|doc|docx|xlsx';
 		$config['max_size']	= '100000';
 
 			$this->db->where('bookID', $bookid);
-			$status_bookFile = $config['file_name'].".pdf";
+			$status_bookFile = $config['file_ext'];
 			//$this->db->where('status', $status_actionTB);
             $data_bookFile=array( "bookFile"=>$status_bookFile,);
 			$this->db->update('booktb', $data_bookFile); 
@@ -781,41 +764,7 @@ $temp = $this->db->get_where('booktb', array('send'=>'N','secret'=>$this->input-
 
                 $data = $this->session->userdata('logged_in');
                 //$data['bookin'] = $this->book->get_book();
-                $this->load->view('reOut',$data);
-                
-            }
-            else
-               {
-                //If no session, redirect to login page
-                redirect('mainPage', 'refresh');
-               }
-      }
-
-     public function backinbook()
-     {
-               if($this->session->userdata('logged_in'))
-           {
-
-                $data = $this->session->userdata('logged_in');
-                //$data['bookin'] = $this->book->get_book();
                 $this->load->view('reCome',$data);
-                
-            }
-            else
-               {
-                //If no session, redirect to login page
-                redirect('mainPage', 'refresh');
-               }
-      }
-
-      public function saveoutbook()
-     {
-               if($this->session->userdata('logged_in'))
-           {
-
-                $data = $this->session->userdata('logged_in');
-                //$data['bookin'] = $this->book->get_book();
-                $this->load->view('offline',$data);
                 
             }
             else

@@ -42,7 +42,7 @@
 								<tr>
                                         <th colspan="9"><?php 
 							 
-							 $this->load->view('detailbook'); ?></th>
+							        $this->load->view('detailbook'); ?></th>
                                         
                                     </tr>
                                     <tr>
@@ -61,19 +61,19 @@
                                     <?php 
 									echo "<INPUT  name='mess0' id='mess0' type=hidden value=".$bookID.">"; 
 									
-									if(count($bookin_r)==0)
+									if(count($bookin_user)==0)
                                     {
                                         echo "<tr><td colspan='9' align='center'>--no data--</td></tr>";
                                     }
                                     else
                                     {
-                                        foreach ($bookin_r as $r) {
+                                        foreach ($bookin_user as $r) {
 										
 								        
                                         echo "<tr>";
                                      	echo "<td align='left' valign='bottom'><INPUT  name='nameID[]' id='nameID[]' type=checkbox value=".$r['id'].">";
 									    echo "<td align='left' valign='bottom'>".$r['acroname']."</td>";
-										echo "<INPUT  name='mess1' id='mess1' type=text value=".$r['acroname'].">"; 
+										echo "<INPUT  name='mess1' id='mess1' type=hidden value=".$r['acroname'].">"; 
                                         echo "</tr>";
 										
 										}

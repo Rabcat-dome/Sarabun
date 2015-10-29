@@ -35,13 +35,13 @@
                         <a href="unitAction"><i class="fa fa-fw fa-table"></i> อยู่ระหว่างดำเนินการ(ยก.)</a>
                     </li>
                     <li>
-                                <a href="backinbook"><i class="fa fa-search"></i> ค้นหาหนังสือรับ(ยก.)</a>
+                                <a href="backexbook"><i class="fa fa-search"></i> ค้นหาหนังสือรับ(ยก.)</a>
                     </li>
                     <li>
                                 <a href="backexbook"><i class="fa fa-search"></i> ค้นหาหนังสือออก(ยก.)</a>
                     </li><li>.</li>
                     <li>
-                                <a href="saveoutbook"><i class="fa fa-fw fa-edit"></i>บันทึกงานนอกระบบ</a>
+                                <a href="newexbook"><i class="fa fa-fw fa-edit"></i>บันทึกงานนอกระบบ</a>
                     </li>
                     <li>.</li>
                                         <li >

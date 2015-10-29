@@ -32,15 +32,10 @@ Class Book extends CI_Model
         
 		     
          $bookID = $_GET['bookID'];
-           $sql = "SELECT usertb.nameID,usertb.id,usertb.acroname, usertb.access FROM usertb1 WHERE (UserTB.access = 'u1' or UserTB.access = 'u2' or UserTB.access = 'u3' or UserTB.access = 'u4') and usertb.acroname <>'".$this->input->post("mess3")."'";
+           $sql = "SELECT usertb.nameID,usertb.id,usertb.acroname, usertb.access FROM usertb WHERE (UserTB.access = 'u1' or UserTB.access = 'u2' or UserTB.access = 'u3' or UserTB.access = 'u4') and usertb.acroname <>'".$this->input->post("mess3")."'";
 		 $query = $this->db->query($sql);
          return $query->result_array();
      }
-
-	 
-
-
-	
 	     function get_ResendPro1()
      {
         
