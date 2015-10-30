@@ -27,7 +27,7 @@
                         <a href="javascript:;" data-toggle="collapse" data-target="#demo2"><i class="fa fa-fw fa-arrows-v"></i> ออกหนังสือ <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="demo2" class="collapse">
                             <li>
-                                <a href="outinbook?bookinout=in"><i class="fa fa-fw fa-edit"></i>ภายใน</a>
+                                <a href="outinbook_in"><i class="fa fa-fw fa-edit"></i>ภายใน</a>
                             </li>
                         </ul>
                     </li>
@@ -38,7 +38,8 @@
                                 <a href="backexbook"><i class="fa fa-search"></i> ค้นหาหนังสือรับ(ยก.)</a>
                     </li>
                     <li>
-                                <a href="backexbook"><i class="fa fa-search"></i> ค้นหาหนังสือออก(ยก.)</a>
+                                <a href="backexbook_send"><i class="fa fa-search"></i> ค้นหาหนังสือออก(ยก.)</a>
+								</input>
                     </li><li>.</li>
                     <li>
                                 <a href="newexbook"><i class="fa fa-fw fa-edit"></i>บันทึกงานนอกระบบ</a>
@@ -49,7 +50,7 @@
                         <ul id="demo3" class="collapse">
 
                     <li>
-                        <a href="UnitAction"><i class="fa fa-fw fa-table"></i> อยู่ระหว่างดำเนินการ</a>
+                        <a href="relist3"><i class="fa fa-fw fa-table"></i> อยู่ระหว่างดำเนินการ</a>
                     </li>
                     <li>
                         <a href="#"><i class="fa fa-search"></i> ค้นหาหนังสือทั้งหมด</a>

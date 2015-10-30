@@ -55,8 +55,10 @@
                                     else
                                     {
                                         foreach ($bookin as $r) {
+
+					                   
                                         echo "<tr>";
-                                        echo "<td align='left'> ".$r['bookID']."</td>";
+                                     
 										echo "<td align='left'> ";
             if($r['send']=="N"){echo "<FONT color=green>(รับ) </FONT>".$this->session->userdata('logged_in')["section"]." ".$r['INID'];}
                                 else{echo "<FONT color=blue>(รับ) </FONT>".$r['author']." ".$r['inid'];}

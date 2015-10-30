@@ -27,12 +27,26 @@ Class Book extends CI_Model
          return $query->result_array();
 		
      }
+     function get_relist3()
+     {
+         $sql = "SELECT  bookTB.bookID,BOOKTB.UNIT, bookTB.send, bookTB.secret, booktb.speed, bookTB.secret, bookTB.INID, bookTB.ID, bookTB.Secret, bookTB.Author, bookTB.Days, bookTB.Subject, bookTB.bookFile FROM bookTB,actionTB where booKtb.booKid=ActionTB.booKid  order by bookTb.inid";
+		 $query = $this->db->query($sql);
+         return $query->result_array();		
+     }
 	    function get_ResendPro()
      {
         
 		     
          $bookID = $_GET['bookID'];
            $sql = "SELECT usertb.nameID,usertb.id,usertb.acroname, usertb.access FROM usertb WHERE (UserTB.access = 'u1' or UserTB.access = 'u2' or UserTB.access = 'u3' or UserTB.access = 'u4') and usertb.acroname <>'".$this->input->post("mess3")."'";
+		 $query = $this->db->query($sql);
+         return $query->result_array();
+     }
+	     function get_unitaction()
+     {
+       
+    
+           $sql = "SELECT ActionTB.bookID,bookTB.ID,bookTB.bookFile,bookTB.id,bookTB.author,booktb.unit,bookTb.speed,bookTB.INID,bookTb.secret,booKTB.send,bookTB.Author,bookTB.days,bookTB.subject,bookTb.bookfile  FROM bookTB,ActionTB where BookTB.BookID=ActionTB.bookID  and actiontb.status='".$this->session->userdata('logged_in')["username"]."' order by booktb.days desc";
 		 $query = $this->db->query($sql);
          return $query->result_array();
      }
@@ -46,12 +60,24 @@ Class Book extends CI_Model
          return $query->result_array();
 		
      }
+
+
+	 
 	  function get_reCome()
      {
 	     $mess18 =$this->input->post("mess18");
          $mess19 =$this->input->post("mess19");
 	     $mess20 =$this->input->post("mess20");
          $sql = "SELECT bookID,send,inid,author,unit,secret,speed,bookFile,subject,id,days  FROM booktb  where   send = 'Y'  and inid like '%".$this->input->post("mess18")."%'  and  secret like '%".$this->input->post("mess19")."%' ";
+         $query = $this->db->query($sql);
+         return $query->result_array();	
+     }
+	   function get_reCome_send()
+     {
+	     $mess18 =$this->input->post("mess18");
+         $mess19 =$this->input->post("mess19");
+	     $mess20 =$this->input->post("mess20");
+         $sql = "SELECT bookID,send,inid,author,unit,secret,speed,bookFile,subject,id,days  FROM booktb  where   send = 'N'  and inid like '%".$this->input->post("mess18")."%'  and  secret like '%".$this->input->post("mess19")."%' ";
          $query = $this->db->query($sql);
          return $query->result_array();	
      }

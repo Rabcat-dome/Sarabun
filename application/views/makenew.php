@@ -41,7 +41,7 @@
 
                             <?php $attributes = array('id' => 'myform');
                              echo form_open('mainPage/outinbook', $attributes);?>
-							 <?php $bookinout = $_GET["bookinout"]?>
+						
                             <div class="panel-body">
                                 <div class="list-group">
                                     <a  class="list-group-item" >
@@ -73,7 +73,8 @@
                                 </select></span>
                                         ชนิดหนังสือ
                                     </a>
-									<?php if($bookinout=="in"){ ?>
+									
+									<?php if($inout!="in"){ ?>
                                     <a  class="list-group-item">
                                         <span class="badge" ><select name="mess3" id="mess3" class="form-control" style="height:20px;width: 250px;" ">
                                     <option style="color:blue;">ปกติ</option>

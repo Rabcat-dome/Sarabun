@@ -303,9 +303,17 @@ class MainPage extends CI_Controller {
      {
 
 
-		
 				 $data = $this->session->userdata('logged_in');
 				 $data['bookin'] = $this->book->get_reCome();
+			     $this->load->view('home',$data);
+				  
+	 }
+	    public function rexCome_send()
+     {
+
+
+				 $data = $this->session->userdata('logged_in');
+				 $data['bookin'] = $this->book->get_reCome_send();
 			     $this->load->view('home',$data);
 				  
 	 }
@@ -536,16 +544,11 @@ class MainPage extends CI_Controller {
 	public function do_upload()
 	 {
 		$bookid= $_POST['bookid'];
-		//$config['file_name'] = "Up".$bookid.$this->session->userdata('logged_in')["username"];
+		$config['file_name'] = "Up".$bookid.$this->session->userdata('logged_in')["username"];
 		$config['upload_path'] = './application/uploads/';
 		$config['allowed_types'] = 'gif|jpg|png|pdf|xls|doc|doc|docx|xlsx';
 		$config['max_size']	= '100000';
 
-			$this->db->where('bookID', $bookid);
-			$status_bookFile = $config['file_ext'];
-			//$this->db->where('status', $status_actionTB);
-            $data_bookFile=array( "bookFile"=>$status_bookFile,);
-			$this->db->update('booktb', $data_bookFile); 
 		
 
 		$this->load->library('upload', $config);
@@ -553,15 +556,23 @@ class MainPage extends CI_Controller {
 		if ( ! $this->upload->do_upload())
 		{
 			 
-               
+           
 		}
 		else
 		{
 
-			   	  $data = $this->session->userdata('logged_in');
-                $data['bookin'] = $this->book->get_book();
-                $this->load->view('home',$data);
-               
+			  $arr_image = array('upload_data' => $this->upload->data());
+                print_r($arr_image);
+
+			
+
+               echo $arr_image['file_name'];
+			   	$this->db->where('bookID', $bookid);
+			$status_bookFile = $config['file_name'];
+			//$this->db->where('status', $status_actionTB);
+            $data_bookFile=array( "bookFile"=>$status_bookFile,);
+			$this->db->update('booktb', $data_bookFile); 
+		
                
 		}
 
@@ -746,7 +757,7 @@ $temp = $this->db->get_where('booktb', array('send'=>'N','secret'=>$this->input-
            {
 
                 $data = $this->session->userdata('logged_in');
-                //$data['bookin'] = $this->book->get_book();
+                $data['bookin'] = $this->book->get_unitaction();
                 $this->load->view('unitAction',$data);
                 
             }
@@ -763,7 +774,7 @@ $temp = $this->db->get_where('booktb', array('send'=>'N','secret'=>$this->input-
            {
 
                 $data = $this->session->userdata('logged_in');
-                //$data['bookin'] = $this->book->get_book();
+                $data['reCome_sen'] = "";
                 $this->load->view('reCome',$data);
                 
             }
@@ -773,8 +784,40 @@ $temp = $this->db->get_where('booktb', array('send'=>'N','secret'=>$this->input-
                 redirect('mainPage', 'refresh');
                }
       }
+	   public function backexbook_send()
+     {
+               if($this->session->userdata('logged_in'))
+           {
+                $data = $this->session->userdata('logged_in');
+                $data['reCome_sen'] = $this->book->get_reCome_send();
+                $this->load->view('reCome',$data);
+                
+            }
+            else
+               {
+                //If no session, redirect to login page
+                redirect('mainPage', 'refresh');
+               }
+      }
+	   public function relist3()
+     {
+               if($this->session->userdata('logged_in'))
+               {
+                $data = $this->session->userdata('logged_in');
+               $data['bookin'] = $this->book->get_relist3();
+                $this->load->view('relist3',$data);
+                
+               }
+            else
+               {
+                //If no session, redirect to login page
+                redirect('mainPage', 'refresh');
+               }
+      }
 
-     public function outinbook()
+   
+   
+     public function outinbook_in()
      {
 
 
@@ -872,6 +915,117 @@ $temp = $this->db->get_where('booktb', array('send'=>'N','secret'=>$this->input-
                 $data = $this->session->userdata('logged_in');
                 //$data['bookin'] = $this->book->get_book();
                 $data['rs'] = $this->book->get_division();
+				$data['inout'] = "in";
+                $this->load->view('makenew',$data);
+
+            }
+            else
+               {
+                //If no session, redirect to login page
+                redirect('mainPage', 'refresh');
+               }
+      }
+
+
+     public function outinbook_out()
+     {
+
+
+               if($this->session->userdata('logged_in'))
+           {
+
+                   if($this->input->post("mess1")!=null)
+                  {
+
+$this->db->distinct();
+$this->db->select('inid');
+$this->db->order_by("inid","ASC");
+$temp = $this->db->get_where('booktb', array('send'=>'N','secret'=>$this->input->post("mess3"),'years'=>mdate("%Y",now()),'unit'=>$this->session->userdata('logged_in')["username"]));
+                   
+				    $arBooktb=array(
+                      "send"=>"N",
+                      "inid"=>"",
+                      "speed"=>$this->input->post("mess1"),
+                      "bookType"=>$this->input->post("mess2"),
+                      "secret"=>$this->input->post("mess3"),
+                      "id"=>$this->input->post("mess5"),
+                      "author"=>$this->input->post("mess6"),
+                      "days"=>$this->input->post("example1"),
+                      "subject"=>$this->input->post("mess8"),
+                      "beginword"=>$this->input->post("mess9")
+                      );
+
+					  $this->db->insert('booktb',$arBooktb);
+
+					  	//------------------------------------ insert ActionTB------------------------------------------
+
+					  $query = $this->db->query("SELECT * FROM bookTB");
+                      foreach ($query->result() as $row_unit)
+                                 {
+                                  $arbookID =$row_unit->bookID;
+                                 }
+					  $logged_in	= $this->session->userdata('logged_in')['username'];
+					  $arActionTB=array(
+                      "actionID"=>$arbookID."".$logged_in,
+                      "bookID"=>$arbookID,
+                      "Status"=>$this->session->userdata('logged_in')['username'],
+                        );										
+				      $this->db->insert('ActionTB',$arActionTB);
+
+
+//------------------------------------ insert ReUnit------------------------------------------
+
+					  $query = $this->db->query("SELECT * FROM bookTB");
+                      foreach ($query->result() as $row_unit)
+                                 {
+                                  $arbookID =$row_unit->bookID;
+                                 }
+					  $logged_in	= $this->session->userdata('logged_in')['username'];
+					  $arReUnit=array(
+                      "bookID"=>$arbookID,
+                      "unit"=>$this->input->post("mess4"),
+                        );										
+				      $this->db->insert('ReUnit',$arReUnit);
+
+
+  //-------------------------------------  insert TransactionTB--------------------------------
+
+
+                      $query = $this->db->query("SELECT * FROM bookTB");
+                      foreach ($query->result() as $row_unit)
+                                 {
+                                  $arbookID =$row_unit->bookID;
+								//  $arUnit =$row_unit->unit;
+                                 }
+
+					  $logged_in	= $this->session->userdata('logged_in')['username'];
+					  $arTransactionTB=array(
+                      "bookID"=>$arbookID,
+                      "Actions"=>"ออกหนังสือ",
+					  "acUnit"=>$this->input->post("mess4"),
+					  "trandate"=>now(),
+                        );										
+				      $this->db->insert('TransactionTB',$arTransactionTB);
+
+
+                    $arActiontb=array();
+                    $arTransactiontb=array(
+                      "acUnit"=>$this->input->post("mess4")
+                      );
+                    $arReunit=array(
+                      );
+
+                    
+                   
+
+                   redirect("mainPage/main","refresh");
+                    exit();
+                  }
+
+                $data = $this->session->userdata('logged_in');
+                //$data['bookin'] = $this->book->get_book();
+                $data['rs'] = $this->book->get_division();
+				$data['inout'] = "out";
                 $this->load->view('makenew',$data);
 
             }

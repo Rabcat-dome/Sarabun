@@ -21,10 +21,10 @@
                         <a href="javascript:;" data-toggle="collapse" data-target="#demo2"><i class="fa fa-fw fa-arrows-v"></i> ออกหนังสือ <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="demo2" class="collapse">
                             <li>
-                                <a href="outinbook?bookinout=in"><i class="fa fa-fw fa-edit"></i>ภายใน:ระดับกอง</a>
+                                <a href="outinbook_in"><i class="fa fa-fw fa-edit"></i>ภายใน:ระดับกอง</a>
                             </li>
                             <li>
-                                <a href="outinbook?bookinout=out"><i class="fa fa-fw fa-edit"></i>ภายนอก:ระดับกรม</a>
+                                <a href="outinbook_out"><i class="fa fa-fw fa-edit"></i>ภายนอก:ระดับกรม</a>
                             </li>
                         </ul>
                     </li>

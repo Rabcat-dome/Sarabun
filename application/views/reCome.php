@@ -8,11 +8,23 @@
 
 <body>
     <div id="wrapper">
+
 <?php if($this->session->userdata('logged_in')["access"]=="u1")
+                 					
         {$this->load->view('include/menuMain');}
         else{$this->load->view('include/menu');}?>
-<?php $attributes1 = array('id' => 'myform');
- echo form_open('mainPage/rexCome', $attributes1);?>
+<?php
+ if($reCome_sen==null)
+   {
+$attributes1 = array('id' => 'myform');
+  echo form_open('mainPage/rexCome', $attributes1);                                       
+   }
+ if(count($reCome_sen)!=0)
+   {
+  $attributes1 = array('id' => 'myform');
+  echo form_open('mainPage/rexCome_send', $attributes1);                                       
+   }
+ ?>
         <div id="page-wrapper">
             <div class="container-fluid">
                 <!-- Page Heading -->
@@ -47,17 +59,19 @@
                                     <a  class="list-group-item">
                                         <span class="badge" ><select class="form-control" style="height:20px;width: 250px;" name="mess19"  id="mess19">
                                     <option></option>      
-                                    <option style="color:blue;">ปกติ</option>
+									
+
+
+									sssss
+                                    <option style="color:blue;">ddd</option>
                                     <option style="color:blue;">ปกปิด</option>
                                     <option style="color:red;">ลับ</option>
                                     <option style="color:red;">ลับมาก</option>
                                     <option style="color:red;">ลับที่สุด</option>
                                 </select></span>
-                                        ชั้นความลับ
-                                    </a>
-                                    
+                                        ชั้นความลับ 
+                                    </a>               
                                 </div>
-
                                	<div class="text-right">
                                     <a onclick="document.getElementById('myform').submit()" href="#">ค้นหาหนังสือ <i class="fa fa-arrow-circle-right"></i></a>
                                 </div>
