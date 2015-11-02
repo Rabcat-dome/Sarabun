@@ -19,52 +19,6 @@ Class Book extends CI_Model
 		
      }
 
-
-if checkunit & checktype & checksend & checkddate & checksecret & beginword & checkdate & Id & Author & subject & inid & checksigner <> "" then
-		Sql = "select * from bookTb where "
-
-		if checksigner <>"" then
-		    sql="SELECT bookTB.*, signTB.signer FROM bookTB RIGHT JOIN signTB ON bookTB.bookID = signTB.bookid WHERE"
-			sql=sql & " signTB.signer ='" & signer & "' and"
-		end if
-		
-		if checkunit <>"" then
-			sql=sql & "unit like '%" & unit & "%' and"
-		end if 
-		if checktype <>"" then
-			sql=sql & "booktype like '%" & booktype & "%' and"
-		end if 
-		if checksecret <>"" then
-			sql=sql & " secret = '" & secret & "' and"
-		end if 
-		if checksend <>"" then
-			sql=sql & " send = '" & booksend &"' and"
-		end if 
-		if inID <>"" then
-			sql=sql & searchID
-		end if 
-		if checkdate <>"" then
-			sql=sql & " days = '" & dates & "' and"
-		end if 
-		if checkddate <>"" then
-			if checktddate <>"" then
-			sql=sql & " datein >= '" & ddates & "' and datein <= '" & tddates & "' and"
-			else
-			sql=sql & " datein = '" & ddates & "' and"
-			end if 			
-		end if 
-		if ID <>"" then
-			sql=sql & " ID like '%" & ID & "%' and"
-		end if 
-		if Author<>"" then
-			sql=sql & " Author like '%" & Author & "%' and"
-		end if
-		if subject<>""then
-			sql=sql & " subject like '%" & subject & "%' and"
-		end if
-		if beginword<>""then
-			sql=sql & " beginword like '%" & beginword & "%' and"
-		end if	
 		
 
 
