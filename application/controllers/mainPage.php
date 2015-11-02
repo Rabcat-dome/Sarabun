@@ -799,13 +799,34 @@ $temp = $this->db->get_where('booktb', array('send'=>'N','secret'=>$this->input-
                 redirect('mainPage', 'refresh');
                }
       }
+
+
 	   public function relist3()
      {
                if($this->session->userdata('logged_in'))
                {
+				
                 $data = $this->session->userdata('logged_in');
-               $data['bookin'] = $this->book->get_relist3();
+             $data['relist3_bookTB_null'] = $this->book->get_relist3_null();
+				$data['relist3_bookTB'] = $this->book->get_relist3();
                 $this->load->view('relist3',$data);
+                
+               }
+            else
+               {
+                //If no session, redirect to login page
+                redirect('mainPage', 'refresh');
+               }
+      }
+	  
+	   public function search()
+     {
+               if($this->session->userdata('logged_in'))
+               {
+				
+                $data = $this->session->userdata('logged_in');
+         
+                $this->load->view('search',$data);
                 
                }
             else

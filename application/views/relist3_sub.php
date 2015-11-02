@@ -56,56 +56,32 @@
                                     }
                                     else
                                     {
-
                                         foreach ($relist3_bookTB as $r) {
 
 					                   
                                         echo "<tr>";
                                      
 										echo "<td align='left'> ";
-            if($r['send']=="N"){echo "<FONT color=green>(รับ) </FONT>".$this->session->userdata('logged_in')["section"]." ".$r['inid'];}
+            if($r['send']=="N"){echo "<FONT color=green>(รับ) </FONT>".$this->session->userdata('logged_in')["section"]." ".$r['INID'];}
                                 else{echo "<FONT color=blue>(รับ) </FONT>".$r['author']." ".$r['inid'];}
 										echo "</td>";
-									
+										echo "<input type='text' name='bookid' id='bookid' value=".$r['bookID']."></input>";
                                         echo "<td align='left'> ".$r['secret']."</td>";
                                         echo "<td align='left'> ".$r['speed']."</td>";
                                         echo "<td align='left'> ";
                                         if($r['bookFile']!=""){get_pdf($r['bookFile']);}
                                         echo "</td>";
                                         echo "<td align='left'> ".$r['subject']."</td>";
-										echo "<td align='left'> ".$r['unit']."</td>";  
-										echo "<td align='left'> ".$r['actions']."</td>";
-                                        echo "<td align='left'> ".$r['acUnit']."</td>";
+										echo "<td align='left'> ".$r['subject']."</td>";  
+										echo "<td align='left'> ".$r['subject']."</td>";
+                                        echo "<td align='left'> ".$r['subject']."</td>";
                                         $var1 = $r['days'];
                                         echo "<td align='left'>".$var1."</td>";
                                         echo "</tr>";
 										$bookid_s =$r['bookID'];
 									    //$this->load->view("relist3_sub",$bookid_s); 
                                         }
-									 foreach ($relist3_bookTB_null as $r) {
-                                          
-                                        echo "<tr>";
-                                     
-										echo "<td align='left'> ";
-            if($r['send']=="N"){echo "<FONT color=green>(รับ) </FONT>".$this->session->userdata('logged_in')["section"]." ".$r['INID'];}
-                                else{echo "<FONT color=blue>(รับ) </FONT>".$r['author']." ".$r['inid'];}
-										echo "</td>";
-									
-                                        echo "<td align='left'> ".$r['secret']."</td>";
-                                        echo "<td align='left'> ".$r['speed']."</td>";
-                                        echo "<td align='left'> ";
-                                        if($r['bookFile']!=""){get_pdf($r['bookFile']);}
-                                        echo "</td>";
-                                        echo "<td align='left'> ".$r['subject']."</td>";
-										echo "<td align='left'> ".$r['unit']."</td>";  
-										echo "<td align='left'> ".$r['actions']."</td>";
-                                        echo "<td align='left'> ".$r['acUnit']."</td>";
-                                        $var1 = $r['days'];
-                                        echo "<td align='left'>".$var1."</td>";
-                                        echo "</tr>";
-										$bookid_s =$r['bookID'];
-									 }
-									
+
 
 										
                                     }
@@ -113,7 +89,9 @@
 									
                                     ?>
 
-                                
+                                  <div class="text-right">
+                                    <a onclick="document.getElementById('myform').submit()" href="#">บันทึก <i class="fa fa-arrow-circle-right"></i></a>
+                                </div>
                                 </tbody>
                             </table>
                         </div>

@@ -18,21 +18,98 @@ Class Book extends CI_Model
          return $query->result_array();
 		
      }
+
+
+if checkunit & checktype & checksend & checkddate & checksecret & beginword & checkdate & Id & Author & subject & inid & checksigner <> "" then
+		Sql = "select * from bookTb where "
+
+		if checksigner <>"" then
+		    sql="SELECT bookTB.*, signTB.signer FROM bookTB RIGHT JOIN signTB ON bookTB.bookID = signTB.bookid WHERE"
+			sql=sql & " signTB.signer ='" & signer & "' and"
+		end if
+		
+		if checkunit <>"" then
+			sql=sql & "unit like '%" & unit & "%' and"
+		end if 
+		if checktype <>"" then
+			sql=sql & "booktype like '%" & booktype & "%' and"
+		end if 
+		if checksecret <>"" then
+			sql=sql & " secret = '" & secret & "' and"
+		end if 
+		if checksend <>"" then
+			sql=sql & " send = '" & booksend &"' and"
+		end if 
+		if inID <>"" then
+			sql=sql & searchID
+		end if 
+		if checkdate <>"" then
+			sql=sql & " days = '" & dates & "' and"
+		end if 
+		if checkddate <>"" then
+			if checktddate <>"" then
+			sql=sql & " datein >= '" & ddates & "' and datein <= '" & tddates & "' and"
+			else
+			sql=sql & " datein = '" & ddates & "' and"
+			end if 			
+		end if 
+		if ID <>"" then
+			sql=sql & " ID like '%" & ID & "%' and"
+		end if 
+		if Author<>"" then
+			sql=sql & " Author like '%" & Author & "%' and"
+		end if
+		if subject<>""then
+			sql=sql & " subject like '%" & subject & "%' and"
+		end if
+		if beginword<>""then
+			sql=sql & " beginword like '%" & beginword & "%' and"
+		end if	
+		
+
+
+	 function get_rsearch()
+     {
+
+	     $mess18 =$this->input->post("mess18");
+         $mess19 =$this->input->post("mess19");
+	     $mess20 =$this->input->post("mess20");
+     	 $sql = "SELECT bookID,send,inid,author,unit,secret,speed,bookFile,subject,id,days  FROM booktb1  where inid like '%".$this->input->post("mess0")."%'  and  secret like '%".$this->input->post("mess20")."%' and  send like '%".$mess19."%'";
+         $query = $this->db->query($sql);
+         return $query->result_array();
+		
+     }
+
 	    function get_transaction()
      {
         
-          $bookID = $_GET['bookID'];
+         $bookID = $_GET['bookID'];
          $sql = "select transactionTB.actions, transactionTB.unit,transactiontb.acUnit, transactionTB.trandate,bookTb.send  FROM bookTB, transactionTB WHERE transactiontb.bookid = '".$bookID."'";
 		 $query = $this->db->query($sql);
          return $query->result_array();
 		
      }
-     function get_relist3()
+
+
+  
+
+	   function get_relist3_null()
+		  
      {
-         $sql = "SELECT  bookTB.bookID,BOOKTB.UNIT, bookTB.send, bookTB.secret, booktb.speed, bookTB.secret, bookTB.INID, bookTB.ID, bookTB.Secret, bookTB.Author, bookTB.Days, bookTB.Subject, bookTB.bookFile FROM bookTB,actionTB where booKtb.booKid=ActionTB.booKid  order by bookTb.inid";
+         $sql = "SELECT transactionTB.bookid, transactionTB.unit,transactionTB.acUnit, transactionTB.actions, transactionTB.trandate, bookTB.bookID, bookTB.send, bookTB.secret, booktb.speed, booktb.subject, booktb.subject, booktb.id, booktb.author, booktb.days, bookTB.secret, bookTB.INID, bookTB.ID, bookTB.Secret, bookTB.Author, bookTB.Days, bookTB.Subject, bookTB.bookFile FROM actionTB,bookTB,transactionTB where booKtb.booKid=ActionTB.booKid and booKtb.booKid=transactionTB.booKid  order by bookTb.inid";
 		 $query = $this->db->query($sql);
          return $query->result_array();		
      }
+	    function get_relist3()
+		  
+     {
+         $sql = "SELECT * FROM `ActionTB` m,`booktb` l LEFT JOIN `transactiontb` r ON r.`bookID` = l.`bookID` WHERE r.`bookID` IS NULL and l.`bookID` =  m.`bookID`";
+		 $query = $this->db->query($sql);
+         return $query->result_array();		
+     }
+
+	 
+
 	    function get_ResendPro()
      {
         

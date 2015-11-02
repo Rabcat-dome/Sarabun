@@ -53,7 +53,7 @@
                         <a href="relist3"><i class="fa fa-fw fa-table"></i> อยู่ระหว่างดำเนินการ</a>
                     </li>
                     <li>
-                        <a href="#"><i class="fa fa-search"></i> ค้นหาหนังสือทั้งหมด</a>
+                        <a href="search"><i class="fa fa-search"></i> ค้นหาหนังสือทั้งหมด</a>
                     </li>
                     <li>
                         <a href="#"><i class="fa fa-fw fa-desktop"></i> เรื่องเพื่อทราบ</a>
