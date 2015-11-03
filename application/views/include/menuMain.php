@@ -56,7 +56,7 @@
                         <a href="search"><i class="fa fa-search"></i> ค้นหาหนังสือทั้งหมด</a>
                     </li>
                     <li>
-                        <a href="#"><i class="fa fa-fw fa-desktop"></i> เรื่องเพื่อทราบ</a>
+                        <a href="bookinfo_new"><i class="fa fa-fw fa-desktop"></i> เรื่องเพื่อทราบ</a>
                     </li>
                     <li>
                         <a href="#"><i class="fa fa-fw fa-desktop"></i> ทะเบียนหนังสือ</a>

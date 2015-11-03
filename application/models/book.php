@@ -13,7 +13,7 @@ Class Book extends CI_Model
 	     $mess18 =$this->input->post("mess18");
          $mess19 =$this->input->post("mess19");
 	     $mess20 =$this->input->post("mess20");
-     	 $sql = "SELECT bookID,send,inid,author,unit,secret,speed,bookFile,subject,id,days  FROM booktb1  where inid like '%".$this->input->post("mess0")."%'  and  secret like '%".$this->input->post("mess20")."%' and  send like '%".$mess19."%'";
+     	 $sql = "SELECT bookID,send,inid,author,unit,secret,speed,bookFile,subject,id,days  FROM booktb  where inid like '%".$this->input->post("mess0")."%'  and  secret like '%".$this->input->post("mess20")."%' and  send like '%".$mess19."%'";
          $query = $this->db->query($sql);
          return $query->result_array();
 		
@@ -28,7 +28,45 @@ Class Book extends CI_Model
 	     $mess18 =$this->input->post("mess18");
          $mess19 =$this->input->post("mess19");
 	     $mess20 =$this->input->post("mess20");
-     	 $sql = "SELECT bookID,send,inid,author,unit,secret,speed,bookFile,subject,id,days  FROM booktb1  where inid like '%".$this->input->post("mess0")."%'  and  secret like '%".$this->input->post("mess20")."%' and  send like '%".$mess19."%'";
+     	 $sql = "SELECT bookID,send,inid,author,unit,secret,speed,bookFile,subject,id,days  FROM booktb  where inid like '%".$this->input->post("mess0")."%'  and  secret like '%".$this->input->post("mess20")."%' and  send like '%".$mess19."%'";
+         $query = $this->db->query($sql);
+         return $query->result_array();
+		
+     }
+
+	 function get_info()
+     {
+
+     	 $sql = "SELECT bookTB.bookID, bookTB.send, booktb.unit,bookTb.speed, bookTB.inid,  bookTB.author,  bookTB.id,  bookTB.subject,   bookTB.secret, bookTB.days, bookTB.bookFile,  bookTB.ID, bookTB.Secret, bookTB.Author, bookTB.Days, bookTB.Subject, bookTB.bookFile FROM bookTB where booktb.info='' ";
+         $query = $this->db->query($sql);
+         return $query->result_array();
+		
+     }
+
+	  function get_search()
+     {
+
+	     $search_year =$this->input->post("search_year");      // ปี
+         $search_outin =$this->input->post("search_outin");    // หนังสือภายใน/ภายนอก
+	     $search_id =$this->input->post("search_id");          // ที่
+		 $search_send =$this->input->post("search_send");      // หนังสือรับ/ส่ง
+         $search_type =$this->input->post("search_type");      // ประเภทความลับ
+	     $search_secret =$this->input->post("search_secret");  // ชั้นความลับ
+		 $search_author =$this->input->post("search_author");  // ชั้นความลับ
+         $search_date =$this->input->post("search_date");      // วันที่
+	     $search_subject =$this->input->post("search_subject");  // หัวเรื่อง
+		 $search_beginword =$this->input->post("search_beginword"); //คำขึ้นต้น
+         $search_ddate =$this->input->post("search_ddate");    //วันที่รับ/ส่ง
+	     $search_tddate =$this->input->post("search_tddate");   //ถึง
+		 $search_signer =$this->input->post("search_signer");   // ลงนาม
+      
+     
+		 if($search_signer==""){
+		  $sql = "SELECT bookTB.* FROM bookTB where years like '%". $search_year."%'  and  unit like '%".$search_outin."%' and  id like '%".$search_id."%'  and  send like '%".$search_send."%'  and  bookType like '%".$search_type."%' and  id like '%".$search_secret."%' and  id like '%".$search_id."%' and  subject like '%".$search_subject."%' and  beginword like '%".$search_beginword."%' and  datein like '%".$search_ddate."%' and  datein BETWEEN '".$search_ddate."' and '".$search_tddate."'" ;
+		 }
+		 if($search_signer!=""){
+		  $sql = "SELECT bookTB.*, signTB.signer FROM bookTB RIGHT JOIN signTB ON bookTB.bookID = signTB.bookid where years like '%". $search_year."%'  and  unit like '%".$search_outin."%' and  id like '%".$search_id."%'  and  send like '%".$search_send."%'  and  bookType like '%".$search_type."%' and  id like '%".$search_secret."%' and  id like '%".$search_id."%' and  subject like '%".$search_subject."%' and  beginword like '%".$search_beginword."%' and  datein like '%".$search_ddate."%' and  datein BETWEEN '".$search_ddate."' and '".$search_tddate."'" ;
+		 }
          $query = $this->db->query($sql);
          return $query->result_array();
 		

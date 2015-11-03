@@ -40,76 +40,102 @@
                             </div>
 
                             <?php $attributes = array('id' => 'myform');
-                             echo form_open('mainPage/newexbook', $attributes);?>
+                             echo form_open('mainPage/send_search', $attributes);?>
 
                             <div class="panel-body">
                                 <div class="list-group">
                                     <a  class="list-group-item" >
-                                        <span class="badge" ><select name="mess1" class="form-control" style="height:20px;width: 250px;">
-                                    <option style="color:blue;">ปกติ</option>
-                                    <option style="color:red;">ด่วน</option>
-                                    <option style="color:red;">ด่วนมาก</option>
-                                    <option style="color:red;">ด่วนที่สุด</option>
+                                        <span class="badge" ><select name="search_year"  id="search_year" class="form-control" style="height:20px;width: 250px;">
+									 <option ></option>
+                                     <option value="2558" >2558</option>
+                                     <option value="2559" >2559</option>
+									 <option value="2559" >2560</option>
+									 <option value="2559" >2561</option>
                                 </select></span>
                                         หนังสือปี พ.ศ.
                                     </a>
 									<a  class="list-group-item">
-                                        <span class="badge" ><select name="mess3" id="mess3" class="form-control" style="height:20px;width: 250px;" ">
+                                        <span class="badge" ><select name="search_outin" id="search_outin" class="form-control" style="height:20px;width: 250px;" ">
+									<option ></option>
+                                    <option style="color:blue;">หนังสือภายใน</option>
+                                    <option style="color:blue;">หนังสือภายนอก</option>
+                                </select></span>
+                                        ประเภทหนังสือ
+                                    </a>
+									 <a  class="list-group-item">
+                                        <span class="badge"><input name="search_id"  id="search_id"  class="form-control" placeholder="" style="height:20px;width: 250px;"></span>
+                                        ที่ภายใน
+                                    </a>
+									<a  class="list-group-item">
+                                        <span class="badge" ><select name="search_send"  id="search_send"  class="form-control" style="height:20px;width: 250px;" ">
+									<option ></option>
+									<option ></option>
                                     <option style="color:blue;">รับ</option>
                                     <option style="color:blue;">ส่ง</option>
                                 </select></span>
                                         รับ/ส่ง
                                     </a>
                                    
-                                    <a  class="list-group-item">
-                                        <span class="badge" ><select name="mess3" class="form-control" style="height:20px;width: 250px;">
-                                    <option style="color:blue;">ปกติ</option>
-                                    <option style="color:blue;">ปกปิด</option>
-                                    <option style="color:red;">ลับ</option>
-                                    <option style="color:red;">ลับมาก</option>
-                                    <option style="color:red;">ลับที่สุด</option>
+                                          <a  class="list-group-item">
+                                        <span class="badge" ><select name="search_type"  id="search_type" class="form-control" style="height:20px;width: 250px;">
+                                    <option></option>
+                                    
+                                    <option><?php echo $r; ?></option>
+                                    <option>สวัสดิการ / การส่งกำลังบำรุง</option>
+                                    <option>กำลังพล</option>
+                                    <option>การฝึก / ศึกษา / อบรม</option>
+                                    <option>คำสั่ง</option>
+                                    <option>ระเบียบ</option>
+                                    <option>เรื่องเชิญ</option>
+                                    <option>รายงาน</option>
+                                    <option>เรือ / อากาศยาน</option>
+                                    <option>แผนงาน</option>
+                                    <option>การข่าว</option>
+                                    <option>อื่นๆ</option>
+                                    <option>อนุมัติ</option>
                                 </select></span>
                                         ชนิดหนังสือ
                                     </a>
 									
 									  <a  class="list-group-item">
-                                        <span class="badge" ><select name="mess3" id="mess3" class="form-control" style="height:20px;width: 250px;" ">
-                                    <option style="color:blue;">รับ</option>
-                                    <option style="color:blue;">ส่ง</option>
+                                        <span class="badge" ><select name="search_secret"  id="search_secret" class="form-control" style="height:20px;width: 250px;" ">
+									<option ></option>
+                                    <option >ปกติ</option>
+                                    <option >ปกปิด</option>
+									<option >ลับ</option>
+									<option >ลับมาก</option>
+									<option >ลับที่สุด</option>
                                 </select></span>
                                         ชั้นความลับ
                                     </a>
 
+                                   
                                     <a  class="list-group-item">
-                                        <span class="badge"><input name="mess5" class="form-control" placeholder="" style="height:20px;width: 250px;"></span>
-                                        ที่
-                                    </a>
-                                    <a  class="list-group-item">
-                                        <span class="badge"><input name="mess6" class="form-control" placeholder="" style="height:20px;width: 250px;"></span>
+                                        <span class="badge"><input name="search_author"  id="search_author" class="form-control" placeholder="" style="height:20px;width: 250px;"></span>
                                         ส่วนราชการ
                                     </a>
                                     <a  class="list-group-item">
-                                        <span class="badge"><input name="mess1" class="form-control" placeholder="" style="height:20px;width: 250px;" id="example1"></span>
+                                        <span class="badge"><input name="search_date"    id="search_date"  class="form-control" placeholder="" style="height:20px;width: 250px;" id="example1"></span>
                                         วันที่
                                     </a>
                                       <a  class="list-group-item">
-                                        <span class="badge"><input name="mess8" id="mess8" class="form-control" placeholder="ใส่รายละเอียด" style="height:20px;width: 350px;" ></span>
+                                        <span class="badge"><input name="search_subject"  id="search_subject"  class="form-control" placeholder="ใส่รายละเอียด" style="height:20px;width: 350px;" ></span>
                                         เรื่อง
                                     </a>
                                     <a  class="list-group-item">
-                                        <span class="badge"><input name="mess9" id="mess9" class="form-control" placeholder="" style="height:20px;width: 250px;" name="mess8"  id="mess8"></span>
+                                        <span class="badge"><input name="search_beginword"  id="search_beginword"  class="form-control" placeholder="" style="height:20px;width: 250px;" name="mess8"  id="mess8"></span>
                                         คำขึ้นต้น
                                     </a>
 									<a  class="list-group-item">
-                                        <span class="badge"><input name="mess7" class="form-control" placeholder="" style="height:20px;width: 250px;" id="example1"></span>
+                                        <span class="badge"><input name="search_ddate"  id="search_ddate" class="form-control" placeholder="" style="height:20px;width: 250px;" id="example1"></span>
                                         วันที่รับ/ส่ง
                                     </a>
 									<a  class="list-group-item">
-                                        <span class="badge"><input name="mess7" class="form-control" placeholder="" style="height:20px;width: 250px;" id="example1"></span>
+                                        <span class="badge"><input name="search_tddate"  id="search_tddate" class="form-control" placeholder="" style="height:20px;width: 250px;" id="example1"></span>
                                         ถึง
                                     </a>
 									<a  class="list-group-item">
-                                        <span class="badge"><input name="mess7" class="form-control" placeholder="" style="height:20px;width: 250px;" id="example1"></span>
+                                        <span class="badge"><input name="search_signer"  id="search_signer" class="form-control" placeholder="" style="height:20px;width: 250px;" id="example1"></span>
                                         ผู้ลงนาม
                                     </a>
 

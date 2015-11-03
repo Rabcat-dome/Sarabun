@@ -131,8 +131,8 @@
 			?>
 		    <?php echo form_close(); ?>
 			  <?php $attributes = array('id' => 'myform6');
-              echo form_open('mainPage/makenew_in', $attributes);
-		      echo "<input type='hidden' name='mess0' id='mess0' value=".$r['bookID']."></input>";
+              echo form_open('mainPage/newexbook', $attributes);
+		      echo "<input type='hidden' name='newid' id='newid' value=".$r['bookID']."></input>";
 			  echo "<input type='hidden' name='mess1' id='mess1' value=".$r['unit']."></input>";
 			  echo "<input type='hidden' name='mess2' id='mess2' value=".$r['beginword']."></input>";
 			

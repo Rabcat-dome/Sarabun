@@ -65,7 +65,7 @@
                                         echo "<td align='left'> <INPUT type='checkbox' name='BookID[]' id='BookID[]'  value=".$r['bookID']."";
 										echo "</td><td align='left'> ";
             if($r['send']=="N"){echo "<FONT color=green>(รับ) </FONT>".$this->session->userdata('logged_in')["section"]." ".$r['inid'];}
-                                else{echo "<FONT color=blue>(รับ) </FONT>".$r['author']."".$r['unit']."".$r['inid'];}
+                                else{echo "<FONT color=blue>(ส่ง) </FONT>".$r['author']."".$r['unit']."".$r['inid'];}
 										 echo "</td>";
                                         echo "<td align='left'> ".$r['secret']."</td>";
                                         echo "<td align='left'> ".$r['speed']."</td>";

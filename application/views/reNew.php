@@ -41,7 +41,7 @@
 
                             <?php $attributes = array('id' => 'myform');
                              echo form_open('mainPage/newexbook', $attributes);?>
-
+                            
                             <div class="panel-body">
                                 <div class="list-group">
                                     <a  class="list-group-item" >
@@ -51,12 +51,13 @@
                                     <option style="color:red;">ด่วนมาก</option>
                                     <option style="color:red;">ด่วนที่สุด</option>
                                 </select></span>
-                                        ความเร่งด่วน
+
+                                        ความเร่งด่วน 
                                     </a>
                                     <a  class="list-group-item">
                                         <span class="badge" ><select name="mess2"  id="mess2" class="form-control" style="height:20px;width: 250px;">
                                     <option></option>
-                                    <?php foreach($rs as $r)  ?>
+                                  
                                     <option><?php echo $r; ?></option>
                                     <option>สวัสดิการ / การส่งกำลังบำรุง</option>
                                     <option>กำลังพล</option>
@@ -71,10 +72,10 @@
                                     <option>อื่นๆ</option>
                                     <option>อนุมัติ</option>
                                 </select></span>
-                                        ชนิดหนังสือ
+                                        ชนิดหนังสือ ss<?php echo $get1?>
                                     </a>
                                     <a  class="list-group-item">
-                                        <span class="badge" ><select name="mess3" id="mess3"  class="form-control" style="height:20px;width: 250px;">
+                                    <span   class="badge" ><select name="mess3" id="mess3"  class="form-control" style="height:20px;width: 250px;">
                                     <option style="color:blue;">ปกติ</option>
                                     <option style="color:blue;">ปกปิด</option>
                                     <option style="color:red;">ลับ</option>

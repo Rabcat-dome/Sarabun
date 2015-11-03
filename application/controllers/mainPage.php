@@ -287,6 +287,19 @@ class MainPage extends CI_Controller {
                 redirect('mainPage', 'refresh');
                }
      }
+	 public function bookinfo_new(){  
+               if($this->session->userdata('logged_in'))
+            {
+				$data = $this->session->userdata('logged_in');
+			    $data['bookin'] = $this->book->get_info();
+                $this->load->view('bookinfo',$data);
+            }
+            else
+               {
+               
+                redirect('mainPage', 'refresh');
+               }
+     }
      public function rexCopy()
      {
 
@@ -353,7 +366,7 @@ class MainPage extends CI_Controller {
     
       }
 
-	      public function send()
+	  public function send()
       {
        $array= $this->input->post("nameID");
 
@@ -630,9 +643,10 @@ class MainPage extends CI_Controller {
 	           }
 
 
-
-     public function newexbook()
+ public function newexbook()
      {
+
+         
                if($this->session->userdata('logged_in')!=null)
            {
                    if($this->input->post("mess1")!=null)
@@ -724,8 +738,118 @@ $temp = $this->db->get_where('booktb', array('send'=>'N','secret'=>$this->input-
                 $data = $this->session->userdata('logged_in');
                 //$data['bookin'] = $this->book->get_book();
                 $data['rs'] = $this->book->get_division();
+			
+			
+				$data['get1'] = $_POST["newid"];
                 $this->load->view('reNew',$data);
+				
+            }
+            else
+               {
+                //If no session, redirect to login page
+                redirect('mainPage', 'refresh');
+               }
+      }
+     public function newexbook()
+     {
 
+         
+               if($this->session->userdata('logged_in')!=null)
+           {
+                   if($this->input->post("mess1")!=null)
+                  {
+
+$this->db->distinct();
+$this->db->select('*');
+$this->db->order_by("inid","ASC");
+$temp = $this->db->get_where('booktb', array('send'=>'N','secret'=>$this->input->post("mess3"),'years'=>mdate("%Y",now()),'unit'=>$this->session->userdata('logged_in')["username"]));
+
+                    $arBooktb=array(
+                      "send"=>"N",
+                      "inid"=>"",
+                      "speed"=>$this->input->post("mess1"),
+                      "bookType"=>$this->input->post("mess2"),
+                      "secret"=>$this->input->post("mess3"),
+                      "id"=>$this->input->post("mess5"),
+                      "author"=>$this->input->post("mess6"),
+                      "days"=>$this->input->post("example1"),
+                      "subject"=>$this->input->post("mess8"),
+                      "beginword"=>$this->input->post("mess9")
+                      );
+
+					  $this->db->insert('booktb',$arBooktb);
+
+	//------------------------------------ insert ActionTB------------------------------------------
+
+					  $query = $this->db->query("SELECT * FROM bookTB");
+                      foreach ($query->result() as $row_unit)
+                                 {
+                                  $arbookID =$row_unit->bookID;
+                                 }
+					  $logged_in	= $this->session->userdata('logged_in')['username'];
+					  $arActionTB=array(
+                      "actionID"=>$arbookID."".$logged_in,
+                      "bookID"=>$arbookID,
+                      "Status"=>$this->session->userdata('logged_in')['username'],
+                        );										
+				      $this->db->insert('ActionTB',$arActionTB);
+
+
+//------------------------------------ insert ReUnit------------------------------------------
+
+					  $query = $this->db->query("SELECT * FROM bookTB");
+                      foreach ($query->result() as $row_unit)
+                                 {
+                                  $arbookID =$row_unit->bookID;
+                                 }
+					  $logged_in	= $this->session->userdata('logged_in')['username'];
+					  $arReUnit=array(
+                      "bookID"=>$arbookID,
+                      "unit"=>$this->input->post("mess4"),
+                        );										
+				      $this->db->insert('ReUnit',$arReUnit);
+
+
+  //-------------------------------------  insert TransactionTB--------------------------------
+
+
+                      $query = $this->db->query("SELECT * FROM bookTB");
+                      foreach ($query->result() as $row_unit)
+                                 {
+                                  $arbookID =$row_unit->bookID;
+								//  $arUnit =$row_unit->unit;
+                                 }
+
+					  $logged_in	= $this->session->userdata('logged_in')['username'];
+					  $arTransactionTB=array(
+                      "bookID"=>$arbookID,
+                      "Actions"=>"รับ",
+					  "acUnit"=>$this->input->post("mess4"),
+					  "trandate"=>now(),
+                        );										
+				      $this->db->insert('TransactionTB',$arTransactionTB);
+
+
+                   
+
+                    $arReunit=array(
+                      );
+
+                   
+                  
+
+                    redirect("mainPage/main","refresh");
+                    exit();
+                  
+				  }
+                $data = $this->session->userdata('logged_in');
+                //$data['bookin'] = $this->book->get_book();
+                $data['rs'] = $this->book->get_division();
+			
+			
+				$data['get1'] = $_POST["newid"];
+                $this->load->view('reNew',$data);
+				
             }
             else
                {
@@ -821,6 +945,8 @@ $temp = $this->db->get_where('booktb', array('send'=>'N','secret'=>$this->input-
 	  
 	   public function search()
      {
+
+		    
                if($this->session->userdata('logged_in'))
                {
 				
@@ -835,6 +961,18 @@ $temp = $this->db->get_where('booktb', array('send'=>'N','secret'=>$this->input-
                 redirect('mainPage', 'refresh');
                }
       }
+
+	      public function send_search()
+     {
+
+
+				 $data = $this->session->userdata('logged_in');
+				 $data['bookin'] = $this->book->get_search();
+			     $this->load->view('searchPro',$data);
+				  
+	 }
+	
+
 
    
    
