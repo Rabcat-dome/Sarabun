@@ -70,14 +70,13 @@
                                         echo "<td align='middle' valign='bottom' rowspan='2'> <a href='transaction?bookID=".$r['bookID']."' >แสดงประวัติ</a></td>";
 						
                                         ?>
-										<td align="middle" valign="bottom" rowspan="2"><a onclick="document.getElementById('myform4').submit()" href="#">บันที่ไฟล์ใหม่</a></td>;
+										<td align="middle" valign="bottom" rowspan="2"><a onclick="document.getElementById('myform4').submit()" href="#">บันที่ไฟล์ใหม่</a></td>
 										
-										<td align="middle" valign="bottom" rowspan="2"><a onclick="document.getElementById('myform3').submit()" href="#">แก้ไขหนังสือ</a></td>;
-
-										<td align="middle" valign="bottom" rowspan="2"><a onclick="document.getElementById('myform').submit()" href="#">จัดเก็บ</a></td>;
+										<td align="middle" valign="bottom" rowspan="2"><a onclick="document.getElementById('myform3').submit()" href="#">แก้ไขหนังสือ</a></td>
+										<td align="middle" valign="bottom" rowspan="2"><a onclick="document.getElementById('myform').submit()" href="#">จัดเก็บ</a></td>
 										
-										<td align="middle" valign="bottom" rowspan="2"><a onclick="document.getElementById('myform2').submit()" href="#">จัดเก็บเพื่อทราบ</a></td>;
-										<td align="middle" valign="bottom" rowspan="2"><a onclick="document.getElementById('myform5').submit()" href="#">ส่งหนังสือ</a></td>;
+										<td align="middle" valign="bottom" rowspan="2"><a onclick="document.getElementById('myform2').submit()" href="#">จัดเก็บเพื่อทราบ</a></td>
+										<td align="middle" valign="bottom" rowspan="2"><a onclick="document.getElementById('myform5').submit()" href="#">ส่งหนังสือ</a></td>
 										<?php
 									//	echo "<td align='middle' valign='bottom' rowspan='2'> <a href='ResendPro?bookID=".$r['bookID']."' >ส่งหนังสือ</a></td>";
 										echo "<td align='middle'  valign='bottom'<th colspan='2' align='middle'>ออกหนังสือ</th></td>";
@@ -131,7 +130,7 @@
 			?>
 		    <?php echo form_close(); ?>
 			  <?php $attributes = array('id' => 'myform6');
-              echo form_open('mainPage/newexbook', $attributes);
+              echo form_open('mainPage/newexbook_newid', $attributes);
 		      echo "<input type='hidden' name='newid' id='newid' value=".$r['bookID']."></input>";
 			  echo "<input type='hidden' name='mess1' id='mess1' value=".$r['unit']."></input>";
 			  echo "<input type='hidden' name='mess2' id='mess2' value=".$r['beginword']."></input>";

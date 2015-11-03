@@ -643,7 +643,7 @@ class MainPage extends CI_Controller {
 	           }
 
 
- public function newexbook()
+ public function newexbook_newid()
      {
 
          
@@ -740,7 +740,7 @@ $temp = $this->db->get_where('booktb', array('send'=>'N','secret'=>$this->input-
                 $data['rs'] = $this->book->get_division();
 			
 			
-				$data['get1'] = $_POST["newid"];
+				$data['newid'] = $_POST["newid"];
                 $this->load->view('reNew',$data);
 				
             }
@@ -845,9 +845,9 @@ $temp = $this->db->get_where('booktb', array('send'=>'N','secret'=>$this->input-
                 $data = $this->session->userdata('logged_in');
                 //$data['bookin'] = $this->book->get_book();
                 $data['rs'] = $this->book->get_division();
+			    $data['newid'] = "";
 			
-			
-				$data['get1'] = $_POST["newid"];
+			  
                 $this->load->view('reNew',$data);
 				
             }

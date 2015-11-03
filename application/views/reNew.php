@@ -72,7 +72,7 @@
                                     <option>อื่นๆ</option>
                                     <option>อนุมัติ</option>
                                 </select></span>
-                                        ชนิดหนังสือ ss<?php echo $get1?>
+                                        ชนิดหนังสือ <?php echo $newid; ?>
                                     </a>
                                     <a  class="list-group-item">
                                     <span   class="badge" ><select name="mess3" id="mess3"  class="form-control" style="height:20px;width: 250px;">
