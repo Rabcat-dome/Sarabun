@@ -131,9 +131,16 @@
 		    <?php echo form_close(); ?>
 			  <?php $attributes = array('id' => 'myform6');
               echo form_open('mainPage/newexbook_newid', $attributes);
-		      echo "<input type='hidden' name='newid' id='newid' value=".$r['bookID']."></input>";
-			  echo "<input type='hidden' name='mess1' id='mess1' value=".$r['unit']."></input>";
-			  echo "<input type='hidden' name='mess2' id='mess2' value=".$r['beginword']."></input>";
+		      echo "<input type='hidden' name='bookmain_bookID' id='bookmain_bookID' value=".$r['bookID']."></input>";
+			  echo "<input type='hidden' name='bookmain_secret' id='bookmain_secret' value=".$r['secret']."></input>";
+			  echo "<input type='hidden' name='bookmain_speed' id='bookmain_speed' value=".$r['speed']."></input>";
+			  echo "<input type='hidden' name='bookmain_bookType' id='bookmain_bookType' value=".$r['bookType']."></input>";
+			  echo "<input type='hidden' name='bookmain_id' id='bookmain_id' value=".$r['id']."></input>";
+			  echo "<input type='hidden' name='bookmain_author' id='bookmain_author' value=".$r['author']."></input>";
+			  echo "<input type='hidden' name='bookmain_author' id='bookmain_author' value=".$r['author']."></input>";
+			  echo "<input type='hidden' name='bookmain_days' id='bookmain_author' value=".$r['days']."></input>";
+			  echo "<input type='hidden' name='bookmain_subject' id='bookmain_subject' value=".$r['subject']."></input>";
+			  echo "<input type='hidden' name='bookmain_beginword' id='bookmain_beginword' value=".$r['beginword']."></input>";
 			
 			?>
 		    <?php echo form_close(); ?>

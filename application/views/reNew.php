@@ -39,13 +39,24 @@
                                 <h3 class="panel-title"><i class="fa fa-fw fa-edit"></i> รับหนังสือจากภายนอกเรื่องใหม่</h3>
                             </div>
 
-                            <?php $attributes = array('id' => 'myform');
-                             echo form_open('mainPage/newexbook', $attributes);?>
-                            
+                            <?php
+							if($bookmain_secret!=""){
+							 $attributes = array('id' => 'myform');
+                             echo form_open('mainPage/newexbook_newid', $attributes);
+							    }
+								else
+								{
+						     $attributes = array('id' => 'myform');
+                             echo form_open('mainPage/newexbook', $attributes);
+								}
+							 ?>
+							 <input name="bookID" id="bookID" value="<?php  echo $bookmain_bookID ?>">
+
                             <div class="panel-body">
                                 <div class="list-group">
                                     <a  class="list-group-item" >
-                                        <span class="badge" ><select name="mess1"  id="mess1" class="form-control" style="height:20px;width: 250px;">
+                                    <span class="badge" ><select name="mess1"  id="mess1" class="form-control" style="height:20px;width: 250px;">
+									<option style="color:blue;" selected><?php echo $bookmain_secret ?></option>
                                     <option style="color:blue;">ปกติ</option>
                                     <option style="color:red;">ด่วน</option>
                                     <option style="color:red;">ด่วนมาก</option>
@@ -58,7 +69,12 @@
                                         <span class="badge" ><select name="mess2"  id="mess2" class="form-control" style="height:20px;width: 250px;">
                                     <option></option>
                                   
+								  
+							
+                            
+
                                     <option><?php echo $r; ?></option>
+									<option selected><?php echo $bookmain_bookType; ?></option>
                                     <option>สวัสดิการ / การส่งกำลังบำรุง</option>
                                     <option>กำลังพล</option>
                                     <option>การฝึก / ศึกษา / อบรม</option>
@@ -72,10 +88,12 @@
                                     <option>อื่นๆ</option>
                                     <option>อนุมัติ</option>
                                 </select></span>
-                                        ชนิดหนังสือ <?php echo $newid; ?>
+                                        ชนิดหนังสือ 
                                     </a>
+									 
                                     <a  class="list-group-item">
                                     <span   class="badge" ><select name="mess3" id="mess3"  class="form-control" style="height:20px;width: 250px;">
+									 <option style="color:blue;" selected><?php echo $bookmain_secret; ?></option>
                                     <option style="color:blue;">ปกติ</option>
                                     <option style="color:blue;">ปกปิด</option>
                                     <option style="color:red;">ลับ</option>
@@ -84,28 +102,29 @@
                                 </select></span>
                                         ชั้นความลับ
                                     </a>
+
                                     <a  class="list-group-item">
-                                        <span class="badge"><input name="mess4" id="mess4"  class="form-control" placeholder="" style="height:20px;width: 250px;"></span>
+                                        <span class="badge"><input name="mess4" id="mess4"  class="form-control" placeholder="" style="height:20px;width: 250px;" ></span>
                                         รับจาก
                                     </a>
                                     <a  class="list-group-item">
-                                        <span class="badge"><input name="mess5" id="mess5"  class="form-control" placeholder="" style="height:20px;width: 250px;"></span>
+                                        <span class="badge"><input name="mess5" id="mess5"  class="form-control" placeholder="" style="height:20px;width: 250px;" value="<?php  echo $bookmain_id ?>"></span>
                                         ที่
                                     </a>
                                     <a  class="list-group-item">
-                                        <span class="badge"><input name="mess6" id="mess6"  class="form-control" placeholder="" style="height:20px;width: 250px;"></span>
+                                        <span class="badge"><input name="mess6" id="mess6"  class="form-control" placeholder="" style="height:20px;width: 250px;" value="<?php  echo $bookmain_author ?>"></span>
                                         ส่วนราชการ
                                     </a>
                                     <a  class="list-group-item">
-                                        <span class="badge"><input name="mess7"    class="form-control" placeholder="" style="height:20px;width: 250px;" id="example1"></span>
+                                        <span class="badge"><input name="mess7"    class="form-control" placeholder="" style="height:20px;width: 250px;" id="example1" value="<?php  echo $bookmain_days ?>"></span>
                                         วันที่
                                     </a>
                                     <a  class="list-group-item">
-                                        <span class="badge"><input name="mess8" id="mess8"  class="form-control" placeholder="ใส่รายละเอียด" style="height:20px;width: 350px;"></span>
+                                        <span class="badge"><input name="mess8" id="mess8"  class="form-control" placeholder="ใส่รายละเอียด" style="height:20px;width: 350px;" value="<?php  echo $bookmain_subject ?>"></span>
                                         เรื่อง
                                     </a>
                                     <a  class="list-group-item">
-                                        <span class="badge"><input name="mess9" id="mess9"  class="form-control" placeholder="" style="height:20px;width: 250px;"></span>
+                                        <span class="badge"><input name="mess9" id="mess9"  class="form-control" placeholder="" style="height:20px;width: 250px;" value="<?php  echo $bookmain_beginword ?>"></span>
                                         คำขึ้นต้น
                                     </a>
                                 </div>
