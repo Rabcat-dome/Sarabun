@@ -66,12 +66,28 @@
                                         echo "<td align='left'> ";
                                         if($r['bookFile']!=""){get_pdf($r['bookFile']);}
                                         echo "</td>";
-                                        echo "<td align='left'> ".$r['subject']."</td>";
+                                        echo "<td align='left'><a  href='bookmain?bookID=".$r['bookID']."'>".$r['subject']."  </a>";
                                         echo "<td align='left'> ".$r['id']."</td>";
                                         echo "<td align='left'> ".$r['author']."</td>";
                                         $var1 = $r['days'];
-                                        echo "<td align='left'>".$var1."</td>";
-                                        echo "</tr>";}
+										$dayArray = array("Sunday","Monday","Tuesday", "Wednesday", "Thursday","Friday","Saturday");
+										$monthArray = array("January","February","March", "April", "May","June","July", "August", "September", "October", "Novmber","Decmber");
+									    $days_yesr = $var1;
+										$day=substr($days_yesr,8,3);
+					                    $month=substr($days_yesr,5,2);
+										$yesr=substr($days_yesr,0,4);
+									    $month =$month+0;
+										$day =$day+0;
+										$month = $monthArray[$month];
+									    
+										$daydata =  $var1;
+                                        $daydata = explode("-",$daydata);
+                                        $jd=cal_to_jd(CAL_GREGORIAN,$daydata[1],$daydata[2],$daydata[0]); //2011-01-29
+                                        $day_text = (jddayofweek($jd,1));
+
+                                        echo "<td align='left'><a  href='transaction?bookID=".$r['bookID']."'>".$day_text.", ".$month.", ".$day.", ".$yesr."</a></td>";
+                                        echo "</tr>";
+										}
                                     }
                                     ?>
 

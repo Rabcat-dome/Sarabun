@@ -153,11 +153,13 @@ Class Book extends CI_Model
 	  function get_book()
      {
 	   
-         $sql = "SELECT booktb.bookID,booktb.unit,booktB.inid,booktb.speed,booktB.beginword,booktb.send,booktb.secret,booktb.id,booktb.author,booktb.days,booktb.subject,booktb.bookFile  FROM booktb,actiontb where booktb.bookID=actiontb.bookID and actiontb.status='".$this->session->userdata('logged_in')["username"]."' order by booktb.days desc";
+         $sql = "SELECT booktb.bookID,booktb.unit,booktB.inid,booktb.speed,booktB.beginword,booktb.send,booktb.secret,booktb.id,booktb.author,booktb.days,booktb.subject,booktb.bookFile  FROM booktb,actiontb where booktb.bookID=actiontb.bookID and actiontb.status='Se-".$this->session->userdata('logged_in')["username"]."' order by booktb.days desc";
 		 $query = $this->db->query($sql);
          return $query->result_array();
 				
      }
+
+	 
 
 
 	   function get_co_upbook()

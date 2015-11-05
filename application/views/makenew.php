@@ -13,6 +13,9 @@
         {$this->load->view('include/menuMain');}
         else{$this->load->view('include/menu');}?>
 
+
+
+
         <div id="page-wrapper">
             <div class="container-fluid">
                 <!-- Page Heading -->
@@ -38,14 +41,24 @@
                             <div class="panel-heading">
                                 <h3 class="panel-title"><i class="fa fa-fw fa-edit"></i> ออกหนังสือภายใน</h3>
                             </div>
+							
+                            <?php 
+							if($bookmain_speed==""){
+							 $attributes = array('id' => 'myform');
+                             echo form_open('mainPage/outinbook_in', $attributes);
+							    }
+								if($bookmain_speed!=""){	
+							 $attributes = array('id' => 'myform');
+                             echo form_open('mainPage/outinbook_in_newid', $attributes);
 
-                            <?php $attributes = array('id' => 'myform');
-                             echo form_open('mainPage/outinbook', $attributes);?>
-						
+								}
+							 ?>
+				            <input name="bookID" id="bookID"  type="hidden"  value="<?php echo $bookmain_bookID ?>" ">
                             <div class="panel-body">
                                 <div class="list-group">
                                     <a  class="list-group-item" >
-                                        <span class="badge" ><select name="mess1" id="mess1" class="form-control" style="height:20px;width: 250px;" ">
+                                    <span class="badge" ><select name="mess1" id="mess1" class="form-control" style="height:20px;width: 250px;" ">
+									<option style="color:blue;" selected><?php echo $bookmain_speed ?></option>
                                     <option style="color:blue;">ปกติ</option>
                                     <option style="color:red;">ด่วน</option>
                                     <option style="color:red;">ด่วนมาก</option>
@@ -57,6 +70,7 @@
                                         <span class="badge" ><select name="mess2" id="mess2" class="form-control" style="height:20px;width: 250px;" >
                                     <option></option>
                                     <?php foreach($rs as $r)  ?>
+									<option><?php echo $bookmain_bookType ?></option>
                                     <option><?php echo $r[0]; ?></option>
                                     <option>สวัสดิการ / การส่งกำลังบำรุง</option>
                                     <option>กำลังพล</option>
@@ -77,6 +91,7 @@
 									<?php if($inout!="in"){ ?>
                                     <a  class="list-group-item">
                                         <span class="badge" ><select name="mess3" id="mess3" class="form-control" style="height:20px;width: 250px;" ">
+									<option selected><?php echo $bookmain_secret ?></option>
                                     <option style="color:blue;">ปกติ</option>
                                     <option style="color:blue;">ปกปิด</option>
                                     <option style="color:red;">ลับ</option>
@@ -85,25 +100,26 @@
                                 </select></span>
                                         ชั้นความลับ
                                     </a>
+									
 									<?php } ?>
                                     <a  class="list-group-item">
-                                        <span class="badge"><input name="mess5" id="mess5" class="form-control" placeholder="" style="height:20px;width: 250px;""></span>
+                                        <span class="badge"><input name="mess5" id="mess5" class="form-control" placeholder="" style="height:20px;width: 250px;" value="<?php echo $bookmain_id ?>" "></span>
                                         ที่
                                     </a>
                                     <a  class="list-group-item">
-                                        <span class="badge"><input name="mess6"  id="mess6" class="form-control" placeholder="" style="height:20px;width: 250px;" "></span>
+                                        <span class="badge"><input name="mess6"  id="mess6" class="form-control" placeholder="" style="height:20px;width: 250px;" value="<?php echo $bookmain_author ?>" "></span>
                                         ส่วนราชการ
                                     </a>
                                      <a  class="list-group-item">
-                                        <span class="badge"><input name="mess7" class="form-control" placeholder="" style="height:20px;width: 250px;" id="example1"></span>
+                                        <span class="badge"><input name="example1" class="form-control" placeholder="" style="height:20px;width: 250px;" id="example1" value="<?php echo $bookmain_days ?>" "></span>
                                         วันที่
                                     </a>
                                     <a  class="list-group-item">
-                                        <span class="badge"><input name="mess8" id="mess8" class="form-control" placeholder="ใส่รายละเอียด" style="height:20px;width: 350px;" ></span>
+                                        <span class="badge"><input name="mess8" id="mess8" class="form-control" placeholder="ใส่รายละเอียด" style="height:20px;width: 350px;"  value="<?php echo $bookmain_subject ?>" "></span>
                                         เรื่อง
                                     </a>
                                     <a  class="list-group-item">
-                                        <span class="badge"><input name="mess9" id="mess9" class="form-control" placeholder="" style="height:20px;width: 250px;" name="mess8"  id="mess8"></span>
+                                        <span class="badge"><input name="mess9" id="mess9" class="form-control" placeholder="" style="height:20px;width: 250px;" name="mess8"   value="<?php echo $bookmain_beginword ?>" id="mess8" "></span>
                                         คำขึ้นต้น
                                     </a>
                                 </div>

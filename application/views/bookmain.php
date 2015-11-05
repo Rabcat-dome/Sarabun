@@ -75,7 +75,7 @@
 										<td align="middle" valign="bottom" rowspan="2"><a onclick="document.getElementById('myform3').submit()" href="#">แก้ไขหนังสือ</a></td>
 										<td align="middle" valign="bottom" rowspan="2"><a onclick="document.getElementById('myform').submit()" href="#">จัดเก็บ</a></td>
 										
-										<td align="middle" valign="bottom" rowspan="2"><a onclick="document.getElementById('myform2').submit()" href="#">จัดเก็บเพื่อทราบ</a></td>
+								
 										<td align="middle" valign="bottom" rowspan="2"><a onclick="document.getElementById('myform5').submit()" href="#">ส่งหนังสือ</a></td>
 										<?php
 									//	echo "<td align='middle' valign='bottom' rowspan='2'> <a href='ResendPro?bookID=".$r['bookID']."' >ส่งหนังสือ</a></td>";
@@ -143,6 +143,22 @@
 			  echo "<input type='hidden' name='bookmain_beginword' id='bookmain_beginword' value=".$r['beginword']."></input>";
 			
 			?>
+			<?php echo form_close(); ?>
+			  <?php $attributes = array('id' => 'myform7');
+              echo form_open('mainPage/outinbook_in_newid', $attributes);
+		      echo "<input type='hidden' name='bookmain_bookID' id='bookmain_bookID' value=".$r['bookID']."></input>";
+			  echo "<input type='hidden' name='bookmain_secret' id='bookmain_secret' value=".$r['secret']."></input>";
+			  echo "<input type='hidden' name='bookmain_speed' id='bookmain_speed' value=".$r['speed']."></input>";
+			  echo "<input type='hidden' name='bookmain_bookType' id='bookmain_bookType' value=".$r['bookType']."></input>";
+			  echo "<input type='hidden' name='bookmain_id' id='bookmain_id' value=".$r['id']."></input>";
+			  echo "<input type='hidden' name='bookmain_author' id='bookmain_author' value=".$r['author']."></input>";
+			  echo "<input type='hidden' name='bookmain_author' id='bookmain_author' value=".$r['author']."></input>";
+			  echo "<input type='hidden' name='bookmain_days' id='bookmain_author' value=".$r['days']."></input>";
+			  echo "<input type='hidden' name='bookmain_subject' id='bookmain_subject' value=".$r['subject']."></input>";
+			  echo "<input type='hidden' name='bookmain_beginword' id='bookmain_beginword' value=".$r['beginword']."></input>";
+			
+			?>
+			
 		    <?php echo form_close(); ?>
 			   <?php $attributes = array('id' => 'myform5');
               echo form_open('mainPage/ResendPro?bookID='.$r['bookID'], $attributes);

@@ -6,13 +6,14 @@
 </head>
 <body>
     <div id="wrapper" style="width: 100%;">
-        <?php if($this->session->userdata('logged_in')["access"]=="u1")
-        {$this->load->view('include/menuMain');}
-        else{$this->load->view('include/menu');}?>
 
+	
         <div id="page-wrapper" style="width: 100%;">
                             <?php $attributes = array('id' => 'myform');
-                             echo form_open('mainPage/receive', $attributes);?>
+                             echo form_open('mainPage/savebook', $attributes);?>
+
+
+
             <div class="container-fluid" >
                                  
                 <!-- Page Heading -->
@@ -41,31 +42,19 @@
                          
 						
                          	 
-							   <table class="table table-bordered table-hover table-striped">
+							   <table class="table table-bordered table-hover table-striped" >
                                 <thead>
 								<tr>
-                                        <th colspan="9"><?php 
-							 $bookID=$_GET['bookID'];
-							 $this->load->view('detailbook',$bookID); ?></th>
+                                <th colspan="9"><?php 							
+		
+			
+			
+							   $this->load->view('detailbook'); 
+
+							   ?></th>
                                         
                                     </tr>
-                                    <tr>
-                                        <th>กดรับ</th>
-                                        <th>ที่ภายใน</th>
-                                        <th>ชั้นความลับ</th>
-                                        <th>ความเร่งด่วน</th>
-                                        <th>ไฟล์แนบ</th>
-                                        <th>เรื่อง</th>
-                                        <th>ที่</th>
-                                        <th>ส่วนราชการ</th>
-                                        <th>วันที่</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-
-                                    <?php 
-									
-									
+                                  <?php 
 									if(count($bookin)==0)
                                     {
                                         echo "<tr><td colspan='9' align='center'>--no data--</td></tr>";
@@ -74,36 +63,65 @@
                                     {
 										
                                         foreach ($bookin as $r) {
+								        echo "<input type='hidden' name='mess0' id='mess0' value=".$r['bookID']."></input>";
+								        echo "<input type='hidden' name='mess1' id='mess1' value=".$r['unit']."></input>";
+						                echo "<input type='hidden' name='mess2' id='mess2' value=".$r['beginword']."></input>";
                                         echo "<tr>";
-                                        echo "<td align='left'> <INPUT type='checkbox' name='BookID[]' id='BookID[]'  value=".$r['bookID']."";
-										echo "</td><td align='left'> ";
-            if($r['send']=="N"){echo "<FONT color=green>(รับ) </FONT>".$this->session->userdata('logged_in')["section"]." ".$r['inid'];}
-                                else{echo "<FONT color=blue>(รับ) </FONT>".$r['author']."".$r['unit']."".$r['inid'];}
-										 echo "</td>";
-                                        echo "<td align='left'> ".$r['secret']."</td>";
-                                        echo "<td align='left'> ".$r['speed']."</td>";
-                                        echo "<td align='left'> ";
-                                        if($r['bookFile']!=""){get_pdf($r['bookFile']);}
-                                        echo "</td>";
-										echo "<td align='left'><a  href='reunitAc?bookID=".$r['bookID']."'>".$r['subject']." </a>";
-										echo "</td>";
-                                         /// echo "<td align='left'> ".$r['subject']."</td>";
-                                        echo "<td align='left'> ".$r['id']."</td>";
-                                        echo "<td align='left'> ".$r['author']."</td>";
-                                        $var1 = $r['days'];
-                                        echo "<td align='left'>".$var1."</td>";
-                                        echo "</tr>";}
-                                    }
-                                    ?>
-
+                                        echo "<td align='middle' valign='bottom' rowspan='2'> <a href='transaction?bookID=".$r['bookID']."' >แสดงประวัติ</a></td>";
+						
+                                        ?>
+										<td align="middle" valign="bottom" rowspan="2"><a onclick="document.getElementById('myform4').submit()" href="#">รับหนังสือ</a></td>
+								
+										<td align="middle" valign="bottom" rowspan="2"><a onclick="document.getElementById('myform5').submit()" href="#">ส่งหนังสือ</a></td>
+										<?php
+										echo "</tr>";
+										echo "<tr>";
+										?>
+									
+										<?php
+                                        echo "</tr>";
+								   
+										?>
+										<div class="text-right">
+                                  
+                                </div>
+                                </thead>
+                                <tbody>
+                                  
+										
                                 </tbody>
                          
 
                         </div>
                     </div>
             </div>
-            <!-- /.container-fluid -->
-         <?php echo form_close(); ?>
+
+    
+           <?php echo form_close(); ?>
+		 
+		   
+			<?php echo form_close(); ?>
+		      <?php $attributes = array('id' => 'myform4');
+              echo form_open('mainPage/upbook', $attributes);
+		      echo "<input type='hidden' name='mess0' id='mess0' value=".$r['bookID']."></input>";
+			  echo "<input type='hidden' name='mess1' id='mess1' value=".$r['unit']."></input>";
+			  echo "<input type='hidden' name='mess2' id='mess2' value=".$r['beginword']."></input>";
+			?>
+		  
+			
+		    <?php echo form_close(); ?>
+			   <?php $attributes = array('id' => 'myform5');
+              echo form_open('mainPage/ResendPro?bookID='.$r['bookID'], $attributes);
+		      echo "<input type='hidden' name='mess0' id='mess0' value=".$r['bookID']."></input>";
+			  echo "<input type='hidden' name='mess1' id='mess1' value=".$r['unit']."></input>";
+			  echo "<input type='hidden' name='mess2' id='mess2' value=".$r['beginword']."></input>";
+			
+			}
+           
+			}
+			?>
+		    <?php echo form_close(); ?>
+		
         </div>
         <!-- /#page-wrapper -->
 

@@ -50,7 +50,7 @@
                              echo form_open('mainPage/newexbook', $attributes);
 								}
 							 ?>
-							 <input name="bookID" id="bookID" value="<?php  echo $bookmain_bookID ?>">
+							 <input name="bookID" id="bookID" type="hidden" value="<?php  echo $bookmain_bookID ?>">
 
                             <div class="panel-body">
                                 <div class="list-group">
@@ -116,7 +116,7 @@
                                         ส่วนราชการ
                                     </a>
                                     <a  class="list-group-item">
-                                        <span class="badge"><input name="mess7"    class="form-control" placeholder="" style="height:20px;width: 250px;" id="example1" value="<?php  echo $bookmain_days ?>"></span>
+                                        <span class="badge"><input name="example1"    class="form-control" placeholder="" style="height:20px;width: 250px;" id="example1" value="<?php  echo $bookmain_days ?>"></span>
                                         วันที่
                                     </a>
                                     <a  class="list-group-item">

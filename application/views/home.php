@@ -23,7 +23,7 @@
                         <ol class="breadcrumb">
                             <li>
                                 <i class="fa fa-fw fa-arrows-v"></i>  
-								       <a onclick="document.getElementById('myform').submit()" href="#">รับหนังสือ </a>
+								       รับหนังสือ 
                             </li>
                             <li class="active">
                                  <a href="main"><i class="fa fa-fw fa-table"></i> ภายในระบบ</a>
@@ -59,10 +59,16 @@
                                     }
                                     else
                                     {
-										
+										 
+                                    
+                           
                                         foreach ($bookin as $r) {
                                         echo "<tr>";
-                                        echo "<td align='left'> <INPUT type='checkbox' name='BookID[]' id='BookID[]'  value=".$r['bookID']."";
+										?>
+                                         <td align="left"><a onclick='document.getElementById("myform").submit()' href="#">รับ </a></td>
+										<?php
+										echo "<input type='hidden' name='bookID' id='bookID' value=".$r['bookID'].">";
+										echo "<input type='hidden' name='beginword' id='beginword' value=".$r['beginword'].">";
 										echo "</td><td align='left'> ";
             if($r['send']=="N"){echo "<FONT color=green>(รับ) </FONT>".$this->session->userdata('logged_in')["section"]." ".$r['inid'];}
                                 else{echo "<FONT color=blue>(ส่ง) </FONT>".$r['author']."".$r['unit']."".$r['inid'];}
@@ -77,14 +83,34 @@
 										echo "<td align='left'><a  href='bookmain?bookID=".$r['bookID']."'>".$r['subject']."  </a>";
 										echo "</td>";
                                          /// echo "<td align='left'> ".$r['subject']."</td>";
-                                        echo "<td align='left'> ".$r['id']."</td>";
-                                        echo "<td align='left'> ".$r['author']."</td>";
+                                        echo "<td align='left'> <a  href='reunitAc?bookID=".$r['bookID']."'>".$r['id']."</a></td>";
+                                        echo "<td align='left'> <a  href='bookmain?bookID=".$r['bookID']."'>".$r['author']."</a></td>";
                                         $var1 = $r['days'];
-                                        echo "<td align='left'>".$var1."</td>";
-                                        echo "</tr>";}
+										$dayArray = array("Sunday","Monday","Tuesday", "Wednesday", "Thursday","Friday","Saturday");
+										$monthArray = array("January","February","March", "April", "May","June","July", "August", "September", "October", "Novmber","Decmber");
+									    $days_yesr = $var1;
+										$day=substr($days_yesr,8,3);
+					                    $month=substr($days_yesr,5,2);
+										$yesr=substr($days_yesr,0,4);
+									    $month =$month+0;
+										$day =$day+0;
+										$month = $monthArray[$month];
+									    
+										$daydata =  $var1;
+                                        $daydata = explode("-",$daydata);
+                                        $jd=cal_to_jd(CAL_GREGORIAN,$daydata[1],$daydata[2],$daydata[0]); //2011-01-29
+                                        $day_text = (jddayofweek($jd,1));
+
+                                        echo "<td align='left'><a  href='transaction?bookID=".$r['bookID']."'>".$day_text.", ".$month.", ".$day.", ".$yesr."</a></td>";
+                                        echo "</tr>";
+										
+										
+										}
+						            
+									
 										?>
                                     
-
+    
                                 </tbody>
                             </table>
                         </div>
